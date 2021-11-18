@@ -3,35 +3,26 @@ package com.example.drinky.view.iu.activities
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.animation.Animation
-import android.view.animation.AnimationUtils
+import android.os.Handler
+import android.view.WindowManager
 import com.example.drinky.R
-import com.example.drinky.databinding.ActivitySplashScreenBinding
 
+@Suppress("DEPRECATION")
 class SplashScreenActivity : AppCompatActivity() {
-
-    private lateinit var binding : ActivitySplashScreenBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivitySplashScreenBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)  //R.layout.activity_splash_screen
+        setContentView(R.layout.activity_splash_screen)
 
+        window.setFlags(
+            WindowManager.LayoutParams.FLAG_FULLSCREEN,
+            WindowManager.LayoutParams.FLAG_FULLSCREEN
+        )
 
-        val animation = AnimationUtils.loadAnimation( this, R.anim.animation)
-        binding.ivSplashScreen.startAnimation(animation)
-        val intent = Intent( this,MainActivity::class.java)
+        Handler().postDelayed({
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish()
+        }, 5000)
 
-        animation.setAnimationListener(object: Animation.AnimationListener{
-            override fun onAnimationStart(animation: Animation?) {
-            }
-            override fun onAnimationEnd(animation: Animation?) {
-                startActivity(intent)
-                finish()
-            }
-            override fun onAnimationRepeat(animation: Animation?) {
-            }
-        } )
     }
 }
