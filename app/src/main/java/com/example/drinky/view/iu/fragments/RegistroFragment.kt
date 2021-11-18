@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.drinky.R
@@ -33,7 +34,7 @@ class RegistroFragment : Fragment() {
     private lateinit var pass:EditText
     private lateinit var btnSignUp:Button
     private lateinit var btnSignIn:Button
-    private lateinit var btnPhone:Button
+    private lateinit var btnPhone:ImageButton
 
     private lateinit var auth: FirebaseAuth
 
@@ -97,7 +98,7 @@ class RegistroFragment : Fragment() {
 
         btnPhone.setOnClickListener{
                 view: View ->
-            println("boton Telefono  - Registro")
+            view.findNavController().navigate(R.id.action_registroFragment_to_loginTelefonoFragment)
         }
 
 

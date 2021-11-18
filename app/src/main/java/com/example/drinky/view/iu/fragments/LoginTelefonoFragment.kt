@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.EditText
+import androidx.navigation.findNavController
 import com.example.drinky.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -22,6 +25,13 @@ class LoginTelefonoFragment : Fragment() {
     private var param1: String? = null
     private var param2: String? = null
 
+    private lateinit var idPais:EditText
+    private lateinit var numPhone:EditText
+    private lateinit var btnEnv:Button
+    private lateinit var btnVer:Button
+    private lateinit var btnSignIn:Button
+    private lateinit var btnSignUp:Button
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
@@ -36,6 +46,38 @@ class LoginTelefonoFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login_telefono, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        idPais = view.findViewById(R.id.indicardo)
+        numPhone = view.findViewById(R.id.NumCelular)
+        btnEnv = view.findViewById(R.id.enviarCode)
+        btnVer = view.findViewById(R.id.btnVerificar)
+        btnSignIn = view.findViewById(R.id.btnSignInT)
+        btnSignUp = view.findViewById(R.id.btnSignUpT)
+
+        btnEnv.setOnClickListener {
+            view:View ->
+            println("Enviando Codigo")
+        }
+
+        btnVer.setOnClickListener {
+                view:View ->
+            view.findNavController().navigate(R.id.action_loginTelefonoFragment_to_homeActivity)
+        }
+
+        btnSignIn.setOnClickListener {
+                view:View ->
+            view.findNavController().navigate(R.id.action_loginTelefonoFragment_to_loginFragment)
+        }
+
+        btnSignUp.setOnClickListener {
+                view:View ->
+            view.findNavController().navigate(R.id.action_loginTelefonoFragment_to_registroFragment)
+        }
+
+
     }
 
     companion object {

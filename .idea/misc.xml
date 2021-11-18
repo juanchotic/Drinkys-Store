@@ -9,6 +9,7 @@
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/borde_edit_text.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/borde_layout_input.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/border_button_sn.xml" value="0.240625" />
+        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/boton_telefono.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.215625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.215625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_home.xml" value="0.21145833333333333" />
@@ -16,10 +17,10 @@
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_person.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/thema.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/activity_home.xml" value="0.2125" />
-        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/activity_main.xml" value="0.16927083333333334" />
+        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/activity_splash_screen.xml" value="0.12" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/fragment_login_telefono.xml" value="0.10916919959473151" />
+        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/fragment_login_telefono.xml" value="0.25" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/fragment_registro.xml" value="0.22" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1953125" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/menu.xml" value="0.1953125" />

@@ -123,7 +123,7 @@ class LoginFragment : Fragment() {
 
         btnPhone.setOnClickListener{
                 view: View ->
-            println("boton Telefono")
+            view.findNavController().navigate(R.id.action_loginFragment_to_loginTelefonoFragment)
         }
 
         btnGoogle.setOnClickListener{
