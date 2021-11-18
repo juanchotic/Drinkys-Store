@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ImageButton
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.drinky.R
@@ -33,8 +34,9 @@ class LoginFragment : Fragment() {
     private lateinit var pass:EditText
     private lateinit var btnSignIn:Button
     private lateinit var btnSignUp:Button
-    private lateinit var btnPhone:Button
+    private lateinit var btnPhone:ImageButton
     private lateinit var btnOlvPass:Button
+    private lateinit var btnGoogle:ImageButton
 
     private lateinit var auth: FirebaseAuth
 
@@ -60,7 +62,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun reload() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     override fun onCreateView(
@@ -80,12 +82,16 @@ class LoginFragment : Fragment() {
         btnSignUp = view.findViewById(R.id.btnSignUp)
         btnPhone = view.findViewById(R.id.btnTelefono)
         btnOlvPass = view.findViewById(R.id.btnOlvidePass)
+        btnGoogle = view.findViewById(R.id.btnGoogle)
 
         btnSignIn.setOnClickListener{
                 view: View ->
             println("boton Sign in")
 
             signIn(view, email.text.toString(), pass.text.toString())
+
+
+
         }
 
         btnSignUp.setOnClickListener{
@@ -100,6 +106,11 @@ class LoginFragment : Fragment() {
             println("boton Telefono")
         }
 
+        btnGoogle.setOnClickListener{
+                view: View ->
+            println("boton Google")
+        }
+
         btnOlvPass.setOnClickListener{
                 view: View ->
             println("boton Olvide contraseña")
@@ -107,18 +118,23 @@ class LoginFragment : Fragment() {
 
     }
 
-    fun signIn(view:View, email:String, password:String){
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
+    private fun signIn(view:View, email:String, password:String){
+        if(email.isEmpty() || password.isEmpty()){
+            Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
+        }
+        else{
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
 
-                    view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+                        view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
 
-                } else {
-                    Toast.makeText(requireContext().applicationContext, "Usuario no valido", Toast.LENGTH_LONG).show()
+                    } else {
+                        Toast.makeText(requireContext().applicationContext, "Usuario no valido", Toast.LENGTH_LONG).show()
+                    }
                 }
-            }
+        }
     }
 
     companion object {

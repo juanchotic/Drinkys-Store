@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.drinky.R
 import com.google.firebase.auth.FirebaseAuth
@@ -59,7 +60,7 @@ class RegistroFragment : Fragment() {
 
 
     private fun reload() {
-        TODO("Not yet implemented")
+        //TODO("Not yet implemented")
     }
 
     override fun onCreateView(
@@ -91,6 +92,7 @@ class RegistroFragment : Fragment() {
             println("boton Sign UP  - Registro")
 
             createAccount(view, email.text.toString(), pass.text.toString())
+
         }
 
         btnPhone.setOnClickListener{
@@ -101,17 +103,23 @@ class RegistroFragment : Fragment() {
 
     }
 
-    fun createAccount(view:View, email:String, password:String){
-        auth.createUserWithEmailAndPassword(email, password)
-            .addOnCompleteListener(requireActivity()) { task ->
-                if (task.isSuccessful) {
-                    val user = auth.currentUser
-                    println("Creacion Con exito")
-                    view.findNavController().navigate(R.id.action_registroFragment_to_homeActivity)
-                } else {
-                    println("Creacion Fallida")
+    private fun createAccount(view:View, email:String, password:String){
+        if(email.isEmpty() || password.isEmpty()){
+            Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
+        }
+        else{
+            auth.createUserWithEmailAndPassword(email, password)
+                .addOnCompleteListener(requireActivity()) { task ->
+                    if (task.isSuccessful) {
+                        val user = auth.currentUser
+                        println("Creacion Con exito")
+                        view.findNavController().navigate(R.id.action_registroFragment_to_homeActivity)
+                    } else {
+                        println("Creacion Fallida")
+                        Toast.makeText(requireContext().applicationContext, "Usuaria ya Existe", Toast.LENGTH_LONG).show()
+                    }
                 }
-            }
+        }
 
     }
 
