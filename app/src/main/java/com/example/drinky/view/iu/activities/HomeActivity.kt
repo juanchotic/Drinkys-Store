@@ -9,22 +9,27 @@ import com.example.drinky.R
 import androidx.core.app.ActivityCompat.startActivityForResult
 
 import android.content.Intent
-
-
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 
 class HomeActivity : AppCompatActivity() {
 
     private lateinit var loginButton:Button
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
+        auth = Firebase.auth
+
         loginButton = findViewById(R.id.ButtonLogin)
 
         loginButton.setOnClickListener{
             view: View ->
+            Firebase.auth.signOut()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish();

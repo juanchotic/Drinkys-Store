@@ -1,5 +1,6 @@
 package com.example.drinky.view.iu.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +12,13 @@ import android.widget.ImageButton
 import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.drinky.R
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
@@ -40,12 +47,21 @@ class LoginFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
 
+    private lateinit var googleSignInClient: GoogleSignInClient
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         arguments?.let {
             param1 = it.getString(ARG_PARAM1)
             param2 = it.getString(ARG_PARAM2)
         }
+
+        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
+
+        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
 
         auth = Firebase.auth
 
@@ -58,6 +74,12 @@ class LoginFragment : Fragment() {
         if(currentUser != null){
             reload();
         }
+
+        updateUI(currentUser)
+
+    }
+
+    private fun updateUI(user: FirebaseUser?) {
 
     }
 
@@ -88,9 +110,7 @@ class LoginFragment : Fragment() {
                 view: View ->
             println("boton Sign in")
 
-            signIn(view, email.text.toString(), pass.text.toString())
-
-
+            signInEP(view, email.text.toString(), pass.text.toString())
 
         }
 
@@ -118,7 +138,7 @@ class LoginFragment : Fragment() {
 
     }
 
-    private fun signIn(view:View, email:String, password:String){
+    private fun signInEP(view:View, email:String, password:String){
         if(email.isEmpty() || password.isEmpty()){
             Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
         }
@@ -137,7 +157,52 @@ class LoginFragment : Fragment() {
         }
     }
 
+    private fun signIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivity(signInIntent, RC_SIGN_IN)
+    }
+
+    private fun startActivity(signInIntent: Intent, rcSignIn: Int) {
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+
+        // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
+        if (requestCode == RC_SIGN_IN) {
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                println("Exitoza google")
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                println("Error google")
+            }
+        }
+    }
+
+    private fun firebaseAuthWithGoogle(idToken: String) {
+        val credential = GoogleAuthProvider.getCredential(idToken, null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    val user = auth.currentUser
+
+                } else {
+                    // If sign in fails, display a message to the user.
+
+                }
+            }
+    }
+
+
     companion object {
+        private const val TAG = "GoogleActivity"
+        private const val RC_SIGN_IN = 9001
         /**
          * Use this factory method to create a new instance of
          * this fragment using the provided parameters.
