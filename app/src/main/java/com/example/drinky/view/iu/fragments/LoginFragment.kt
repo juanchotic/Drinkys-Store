@@ -7,8 +7,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.drinky.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -32,6 +36,7 @@ class LoginFragment : Fragment() {
     private lateinit var btnPhone:Button
     private lateinit var btnOlvPass:Button
 
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +45,22 @@ class LoginFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
+        auth = Firebase.auth
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            reload();
+        }
+
+    }
+
+    private fun reload() {
+        TODO("Not yet implemented")
     }
 
     override fun onCreateView(
@@ -64,7 +85,7 @@ class LoginFragment : Fragment() {
                 view: View ->
             println("boton Sign in")
 
-            view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+            signIn(view, email.text.toString(), pass.text.toString())
         }
 
         btnSignUp.setOnClickListener{
@@ -84,6 +105,20 @@ class LoginFragment : Fragment() {
             println("boton Olvide contraseña")
         }
 
+    }
+
+    fun signIn(view:View, email:String, password:String){
+        auth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(requireActivity()) { task ->
+                if (task.isSuccessful) {
+                    val user = auth.currentUser
+
+                    view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+
+                } else {
+                    Toast.makeText(requireContext().applicationContext, "Usuario no valido", Toast.LENGTH_LONG).show()
+                }
+            }
     }
 
     companion object {
