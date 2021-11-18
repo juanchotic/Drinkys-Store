@@ -1,6 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/nav_graph">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/loginFragment">
 
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.example.drinky.view.iu.fragments.LoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_loginFragment_to_registroFragment"
+            app:destination="@id/registroFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/registroFragment"
+        android:name="com.example.drinky.view.iu.fragments.RegistroFragment"
+        android:label="fragment_registro"
+        tools:layout="@layout/fragment_registro" >
+        <action
+            android:id="@+id/action_registroFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
+        <action
+            android:id="@+id/action_registroFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <activity
+        android:id="@+id/homeActivity"
+        android:name="com.example.drinky.view.iu.activities.HomeActivity"
+        android:label="activity_home"
+        tools:layout="@layout/activity_home" />
 </navigation>

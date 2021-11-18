@@ -20,16 +20,30 @@
         app:itemIconTint="#BCBAB8"
         />
 
-    <!--
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="459dp"
     <fragment
-        android:id="@+id/nav_host_fragment_activity_main"
+        android:id="@+id/myNavHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
-        android:layout_width="395dp"
-        android:layout_height="70dp"
-        app:defaultNavHost="true"
-        tools:layout_editor_absoluteX="8dp"
-        tools:layout_editor_absoluteY="584dp" />-->
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:navGraph="@navigation/nav_graph"
+        app:defaultNavHost="true" />
+
+    <!--
+        <fragment android:name="com.example.drinky.view.iu.fragments.LoginFragment"
+            android:id="@+id/LoginFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_nt" />
+
+
+            tools:layout_editor_absoluteX="0dp"
+            tools:layout_editor_absoluteY="459dp"
+        <fragment
+            android:id="@+id/nav_host_fragment_activity_main"
+            android:name="androidx.navigation.fragment.NavHostFragment"
+            android:layout_width="395dp"
+            android:layout_height="70dp"
+            app:defaultNavHost="true"
+            tools:layout_editor_absoluteX="8dp"
+            tools:layout_editor_absoluteY="584dp" />-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "435099057515",
+    "project_id": "drinky-f2289",
+    "storage_bucket": "drinky-f2289.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:435099057515:android:b1bf1b10f63c06e120202e",
+        "android_client_info": {
+          "package_name": "com.example.drinky"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "435099057515-evp5q875c1iqfij7ii5hu0jv0lr5rfqr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAhj_bO8wvJm7yr7GkA69HZC6Vx43YrR90"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "435099057515-evp5q875c1iqfij7ii5hu0jv0lr5rfqr.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
