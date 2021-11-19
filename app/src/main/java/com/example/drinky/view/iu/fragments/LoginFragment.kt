@@ -70,13 +70,6 @@ class LoginFragment : Fragment() {
     override fun onStart() {
         super.onStart()
 
-        val currentUser = auth.currentUser
-        if(currentUser != null){
-            reload();
-        }
-
-        updateUI(currentUser)
-
     }
 
     private fun updateUI(user: FirebaseUser?) {
@@ -106,6 +99,13 @@ class LoginFragment : Fragment() {
         btnOlvPass = view.findViewById(R.id.btnOlvidePass)
         btnGoogle = view.findViewById(R.id.btnGoogle)
 
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+        }
+
+        updateUI(currentUser)
+
         btnSignIn.setOnClickListener{
                 view: View ->
             println("boton Sign in")
@@ -129,6 +129,7 @@ class LoginFragment : Fragment() {
         btnGoogle.setOnClickListener{
                 view: View ->
             println("boton Google")
+            signIn()
         }
 
         btnOlvPass.setOnClickListener{
