@@ -1,5 +1,6 @@
 package com.example.drinky.view.iu.fragments
 
+import android.bluetooth.BluetoothAssignedNumbers.GOOGLE
 import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -13,14 +14,17 @@ import android.widget.Toast
 import androidx.navigation.findNavController
 import com.example.drinky.R
 import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import java.security.Provider
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -47,6 +51,9 @@ class LoginFragment : Fragment() {
 
     private lateinit var auth: FirebaseAuth
 
+    private val GOOGLE_SIGN_IN = 9001
+    private lateinit var viewGenery : View
+
     private lateinit var googleSignInClient: GoogleSignInClient
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -56,28 +63,19 @@ class LoginFragment : Fragment() {
             param2 = it.getString(ARG_PARAM2)
         }
 
-        val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-            .requestIdToken(getString(R.string.default_web_client_id))
-            .requestEmail()
-            .build()
-
-        googleSignInClient = GoogleSignIn.getClient(requireActivity(), gso)
-
         auth = Firebase.auth
 
     }
 
     override fun onStart() {
         super.onStart()
-
+        // Check if user is signed in (non-null) and update UI accordingly.
+        var currentUser = auth.getCurrentUser()
+        updateUI(currentUser);
     }
 
     private fun updateUI(user: FirebaseUser?) {
 
-    }
-
-    private fun reload() {
-        //TODO("Not yet implemented")
     }
 
     override fun onCreateView(
@@ -91,6 +89,8 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        viewGenery = view
+
         email = view.findViewById(R.id.inputUser)
         pass = view.findViewById(R.id.inputPassword)
         btnSignIn = view.findViewById(R.id.btnSignIn)
@@ -103,8 +103,6 @@ class LoginFragment : Fragment() {
         if(currentUser != null){
             view.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
         }
-
-        updateUI(currentUser)
 
         btnSignIn.setOnClickListener{
                 view: View ->
@@ -129,6 +127,7 @@ class LoginFragment : Fragment() {
         btnGoogle.setOnClickListener{
                 view: View ->
             println("boton Google")
+
             signIn()
         }
 
@@ -159,17 +158,67 @@ class LoginFragment : Fragment() {
     }
 
     private fun signIn() {
-        val signInIntent = googleSignInClient.signInIntent
-        startActivity(signInIntent, RC_SIGN_IN)
-    }
+        val googleConf = GoogleSignInOptions
+            .Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
 
-    private fun startActivity(signInIntent: Intent, rcSignIn: Int) {
+        val googleClient = GoogleSignIn.getClient(requireActivity(), googleConf)
 
+        //googleClient.signOut()
+
+        startActivityForResult(googleClient.signInIntent, GOOGLE_SIGN_IN)
+
+        //val signInIntent = googleSignInClient.signInIntent
+        //startActivity(signInIntent, RC_SIGN_IN)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         super.onActivityResult(requestCode, resultCode, data)
 
+        if(requestCode == GOOGLE_SIGN_IN){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                // Google Sign In was successful, authenticate with Firebase
+                val account = task.getResult(ApiException::class.java)!!
+                firebaseAuthWithGoogle(account.idToken!!)
+            } catch (e: ApiException) {
+                // Google Sign In failed, update UI appropriately
+                Toast.makeText(requireContext().applicationContext, "Error en Account", Toast.LENGTH_LONG).show()
+            }
+            /*
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+
+            try{
+                val account = task.getResult(ApiException::class.java)!!
+
+                if(account != null){
+                    val credential = GoogleAuthProvider.getCredential(account.idToken, null)
+                    auth.signInWithCredential(credential)           // FirebaseAuth.getInstance().signInWithCredential(credential)
+                        .addOnCompleteListener(requireActivity()) { task ->
+                            if (task.isSuccessful) {
+                                // Sign in success, update UI with the signed-in user's information
+                                val user = auth.currentUser
+                                viewGenery.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+
+                            } else {
+                                // If sign in fails, display a message to the user.
+                                Toast.makeText(requireContext().applicationContext, "Error de Autenticacion", Toast.LENGTH_LONG).show()
+                            }
+                        }
+                }
+
+            }catch (e: ApiException){
+
+                println(e)
+                Toast.makeText(requireContext().applicationContext, "Error en account", Toast.LENGTH_LONG).show()
+
+            }*/
+
+        }
+
+        /*
         // Result returned from launching the Intent from GoogleSignInApi.getSignInIntent(...);
         if (requestCode == RC_SIGN_IN) {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
@@ -182,7 +231,7 @@ class LoginFragment : Fragment() {
                 // Google Sign In failed, update UI appropriately
                 println("Error google")
             }
-        }
+        }*/
     }
 
     private fun firebaseAuthWithGoogle(idToken: String) {
@@ -192,10 +241,10 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
-
+                    viewGenery.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
                 } else {
                     // If sign in fails, display a message to the user.
-
+                    Toast.makeText(requireContext().applicationContext, "Error de Autenticacion", Toast.LENGTH_LONG).show()
                 }
             }
     }
