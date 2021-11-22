@@ -14,7 +14,9 @@
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_baseline_person_24.xml" value="0.215625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_home.xml" value="0.21145833333333333" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_launcher_background.xml" value="0.240625" />
+        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_menu_toolbar.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_person.xml" value="0.21145833333333333" />
+        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/ic_shopping_toolbar.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/thema.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/activity_home.xml" value="0.2125" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/layout/activity_main.xml" value="0.25" />
@@ -25,6 +27,7 @@
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1953125" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/menu.xml" value="0.1953125" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/menu_nav_bar.xml" value="0.25" />
+        <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/toolbar_nav_menu.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.21145833333333333" />
       </map>
     </option>

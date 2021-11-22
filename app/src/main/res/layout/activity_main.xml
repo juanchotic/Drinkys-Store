@@ -5,8 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/thema"
-    android:paddingTop="10dp"
+    android:paddingTop="0dp"
     tools:context=".view.iu.activities.MainActivity">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/doradoStar"
+        tools:ignore="MissingConstraints">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/menu_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            android:layout_weight="2"
+            app:navigationIcon="@drawable/ic_menu_toolbar" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/search_toolbar"
+            android:layout_width="54dp"
+            android:layout_height="match_parent"
+            app:navigationIcon="@drawable/ic_search_toolbar" />
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/car_tooolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="?attr/actionBarSize"
+            app:navigationIcon="@drawable/ic_shopping_toolbar" />
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
