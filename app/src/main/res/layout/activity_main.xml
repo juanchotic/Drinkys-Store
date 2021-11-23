@@ -8,11 +8,12 @@
     android:paddingTop="0dp"
     tools:context=".view.iu.activities.MainActivity">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:background="@color/doradoStar"
+        android:orientation="horizontal"
         tools:ignore="MissingConstraints">
 
         <androidx.appcompat.widget.Toolbar
@@ -34,7 +35,7 @@
             android:layout_height="?attr/actionBarSize"
             app:navigationIcon="@drawable/ic_shopping_toolbar" />
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
@@ -53,8 +54,12 @@
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        app:defaultNavHost="true"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_navigation"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
+        app:layout_constraintVertical_bias="0.329"
         app:navGraph="@navigation/nav_graph"
-        app:defaultNavHost="true" />
+        tools:layout_editor_absoluteX="0dp" />
 
     <!--
         <fragment android:name="com.example.drinky.view.iu.fragments.LoginFragment"
