@@ -115,7 +115,8 @@
                     android:gravity="bottom"
                     android:text="Ingrese el codigo"
                     android:textAlignment="center"
-                    android:textSize="20dp" />
+                    android:textSize="20dp"
+                    tools:ignore="RtlCompat" />
 
                 <EditText
                     android:id="@+id/codigo"
