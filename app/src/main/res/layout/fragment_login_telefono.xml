@@ -5,128 +5,142 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center_horizontal"
-    android:paddingTop="10dp"
     android:background="@android:color/transparent"
     tools:context=".view.iu.fragments.LoginTelefonoFragment">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:padding="20dp"
-        android:layout_marginTop="60dp"
-        android:layout_marginBottom="50dp"
-        >
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btnSignInT"
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:background="@drawable/borde_button_su"
-        android:text="SIGN IN"
-        android:layout_marginRight="15dp"
-        android:textColor="@android:color/black" />
-
-    <Button
-        android:id="@+id/btnSignUpT"
-        android:layout_width="wrap_content"
-        android:layout_height="33dp"
-        android:background="@drawable/borde_button_su"
-        android:text="SIGN UP"
-        android:layout_marginLeft="15dp"
-        android:textColor="@android:color/black"/>
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:gravity="center"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:background="@drawable/borde_layout_input"
-        >
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="207dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="TELEFONO"
-            android:textAlignment="center"
-            android:textSize="30dp" />
-
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:paddingTop="20dp"
-        android:paddingBottom="20dp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"
-        >
-
-        <EditText
-            android:id="@+id/indicardo"
-            android:layout_width="54dp"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="+57"
-            android:layout_marginRight="5dp"/>
-
-        <EditText
-            android:id="@+id/NumCelular"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:hint="# Celular"
-            android:inputType="phone" />
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingTop="60dp"
+            android:paddingBottom="60dp"
+            android:orientation="vertical">
 
-    </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:padding="20dp"
+                android:layout_marginBottom="50dp"
+                >
+
+            <Button
+                android:id="@+id/btnSignInT"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:background="@drawable/borde_button_su"
+                android:text="SIGN IN"
+                android:layout_marginRight="15dp"
+                android:textColor="@android:color/black" />
+
+            <Button
+                android:id="@+id/btnSignUpT"
+                android:layout_width="wrap_content"
+                android:layout_height="33dp"
+                android:background="@drawable/borde_button_su"
+                android:text="SIGN UP"
+                android:layout_marginLeft="15dp"
+                android:textColor="@android:color/black"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:background="@drawable/borde_layout_input"
+                >
+
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="207dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="TELEFONO"
+                    android:textAlignment="center"
+                    android:textSize="30dp" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:paddingTop="20dp"
+                android:paddingBottom="20dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                >
+
+                <EditText
+                    android:id="@+id/indicardo"
+                    android:layout_width="54dp"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:inputType="textPersonName"
+                    android:text="+57"
+                    android:layout_marginRight="5dp"/>
+
+                <EditText
+                    android:id="@+id/NumCelular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ems="10"
+                    android:hint="# Celular"
+                    android:inputType="phone" />
+
+            </LinearLayout>
 
 
-    <Button
-        android:id="@+id/enviarCode"
-        android:layout_width="150dp"
-        android:layout_height="wrap_content"
-        android:text="ENVIAR CODIGO"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/boton_telefono"
-        android:textColor="@color/black"/>
+            <Button
+                android:id="@+id/enviarCode"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:text="ENVIAR CODIGO"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/boton_telefono"
+                android:textColor="@color/black"/>
 
-        <TextView
-            android:id="@+id/textView4"
-            android:layout_width="202dp"
-            android:layout_height="39dp"
-            android:gravity="bottom"
-            android:text="Ingrese el codigo"
-            android:textAlignment="center"
-            android:textSize="20dp" />
+                <TextView
+                    android:id="@+id/textView4"
+                    android:layout_width="202dp"
+                    android:layout_height="39dp"
+                    android:gravity="bottom"
+                    android:text="Ingrese el codigo"
+                    android:textAlignment="center"
+                    android:textSize="20dp" />
 
-        <EditText
-            android:id="@+id/codigo"
-            android:layout_width="155dp"
-            android:layout_height="39dp"
-            android:background="@drawable/borde_edit_text"
-            android:ems="10"
-            android:hint="codigo"
-            android:inputType="numberDecimal"
-            android:layout_marginBottom="15dp"
-            android:layout_marginTop="10dp"/>
+                <EditText
+                    android:id="@+id/codigo"
+                    android:layout_width="155dp"
+                    android:layout_height="39dp"
+                    android:background="@drawable/borde_edit_text"
+                    android:ems="10"
+                    android:hint="codigo"
+                    android:inputType="numberDecimal"
+                    android:layout_marginBottom="15dp"
+                    android:layout_marginTop="10dp"/>
 
-        <Button
-            android:id="@+id/btnVerificar"
-            android:layout_width="116dp"
-            android:layout_height="wrap_content"
-            android:text="VERIFICAR"
-            android:background="@drawable/boton_telefono"
-            android:textColor="@color/black" />
+                <Button
+                    android:id="@+id/btnVerificar"
+                    android:layout_width="116dp"
+                    android:layout_height="wrap_content"
+                    android:text="VERIFICAR"
+                    android:background="@drawable/boton_telefono"
+                    android:textColor="@color/black" />
 
 
-    </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
 
 </LinearLayout>
