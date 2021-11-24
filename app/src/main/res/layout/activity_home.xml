@@ -10,15 +10,191 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_height="wrap_content"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/doradoCenter"
+        app:itemIconTint="#BCBAB8"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu"
-        android:background="@color/doradoCenter"
-        app:itemIconTint="#BCBAB8"
-        />
+        app:menu="@menu/bottom_nav_menu" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="10dp"
+        android:text="Sell All"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/textView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:text="POPULARES"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        tools:layout_editor_absoluteX="26dp" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView7"
+        android:layout_width="420dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="11dp"
+        android:text="BEBIDAS"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView8"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView7" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView8"
+        android:layout_width="0dp"
+        android:layout_height="70dp"
+        android:layout_marginBottom="9dp"
+        app:layout_constraintBottom_toTopOf="@+id/textView4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp"
+                tools:srcCompat="@drawable/bebidas1">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp"
+                tools:srcCompat="@drawable/bebidas2">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp"
+                tools:srcCompat="@drawable/bebidas3">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp"
+                tools:srcCompat="@drawable/bebidas4"></ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp"
+                tools:srcCompat="@drawable/bebidas4"></ImageButton>
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginBottom="11dp"
+        android:text="ANCHETAS"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toTopOf="@+id/horizontalScrollView9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/horizontalScrollView8" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView9"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="74dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+
+            <ImageButton
+                android:layout_width="102dp"
+                android:layout_height="70dp">
+
+            </ImageButton>
+        </LinearLayout>
+    </HorizontalScrollView>
+
 
     <!--
         tools:layout_editor_absoluteX="0dp"
