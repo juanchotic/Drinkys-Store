@@ -18,7 +18,7 @@
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/menu_toolbar"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="?attr/actionBarSize"
             android:layout_weight="2"
             app:navigationIcon="@drawable/ic_menu_toolbar" />
