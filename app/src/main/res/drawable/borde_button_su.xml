@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <shape xmlns:android="http://schemas.android.com/apk/res/android" android:shape="rectangle">
     <gradient
-        android:startColor="@color/doradoStar"
-        android:endColor="@color/doradoEnd"
-        android:centerColor="@color/doradoCenter"
+        android:startColor="#E3E4E6"
+        android:endColor="#848486"
+        android:centerColor="#BEBFC1"
         android:angle="270" />
 
     <stroke android:width="0dp"
         android:color="#ff000000"/>
 
-    <corners android:radius="40px"/>
+    <corners android:radius="30px"/>
 </shape>
-

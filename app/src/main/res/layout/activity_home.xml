@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+
     android:background="@drawable/thema"
     android:paddingTop="?attr/actionBarSize"
     tools:context=".view.iu.activities.MainActivity">
@@ -207,5 +208,6 @@
         app:defaultNavHost="true"
         tools:layout_editor_absoluteX="8dp"
         tools:layout_editor_absoluteY="584dp" />-->
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
