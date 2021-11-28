@@ -8,46 +8,6 @@
     android:paddingTop="0dp"
     tools:context=".view.iu.activities.MainActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/doradoStar"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/menu_toolbar"
-            android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_weight="2"
-            app:navigationIcon="@drawable/ic_menu_toolbar" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/search_toolbar"
-            android:layout_width="54dp"
-            android:layout_height="match_parent"
-            app:navigationIcon="@drawable/ic_search_toolbar" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/car_tooolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_shopping_toolbar" />
-
-    </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/doradoCenter"
-        app:itemIconTint="#BCBAB8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
     <fragment
         android:id="@+id/myNavHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
