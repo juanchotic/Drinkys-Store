@@ -14,6 +14,7 @@ import android.view.MenuItem
 import android.widget.ImageButton
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorDestinationBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
@@ -24,9 +25,11 @@ import com.google.firebase.ktx.Firebase
 class HomeActivity : AppCompatActivity() {
 
     //private lateinit var loginButton:Button
-    //private lateinit var auth: FirebaseAuth
+    private lateinit var auth: FirebaseAuth
 
     private lateinit var carritoCompra: ImageButton
+    private lateinit var irAlogin: ImageButton
+
 
     //val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
     //val navController = navHostFragment.navController
@@ -36,24 +39,31 @@ class HomeActivity : AppCompatActivity() {
         setContentView(R.layout.activity_home)
 
         carritoCompra = findViewById(R.id.btnCarritoCompra)
+        irAlogin = findViewById(R.id.irAlogin)
 
         /*
         carritoCompra.setOnClickListener {
             navController.navigate(R.id.productFragment)
         }*/
 
-        /*
+
         auth = Firebase.auth
 
-        loginButton = findViewById(R.id.ButtonLogin)
-
-        loginButton.setOnClickListener{
-            view: View ->
+        irAlogin.setOnClickListener{
             Firebase.auth.signOut()
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
             finish();
-        }*/
+        }
+
+        carritoCompra.setOnClickListener{
+            //Firebase.auth.signOut()
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+            finish();
+            println("Donde esta el carrito")
+        }
+
 
     }
 

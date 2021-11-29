@@ -5,6 +5,7 @@ import android.media.Image;
 
 public class ListElement {
 
+    private int idProducto;
     private Icon imagen;
     private String nombre;
     private int precio;
@@ -37,4 +38,13 @@ public class ListElement {
     public void setPrecio(int precio) {
         this.precio = precio;
     }
+
+    public int getIdProducto() {
+        return idProducto;
+    }
+
+    public void setIdProducto(int idProducto) {
+        this.idProducto = idProducto;
+    }
+
 }

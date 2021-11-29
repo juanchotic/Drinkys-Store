@@ -37,6 +37,18 @@
             android:scaleType="fitCenter"
             android:src="@drawable/ic_shopping_toolbar" />
 
+        <ImageButton
+            android:id="@+id/irAlogin"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:background="@android:color/transparent"
+            android:layout_marginRight="10dp"
+            android:adjustViewBounds="true"
+            android:padding="5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_logo" />
+
+
     </LinearLayout>
 
 
