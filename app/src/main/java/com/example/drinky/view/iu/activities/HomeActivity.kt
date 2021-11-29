@@ -21,6 +21,7 @@ class HomeActivity : AppCompatActivity() {
     //private lateinit var auth: FirebaseAuth
 
     private lateinit var carritoCompra: ImageButton
+    private lateinit var comentarios: ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -45,6 +46,15 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
             finish();
         }*/
+
+        comentarios = findViewById(R.id.btnComentarios)
+
+        comentarios.setOnClickListener {
+                view : View ->
+            val intent = Intent(this, ComentariosActivity::class.java)
+            startActivity(intent)
+        }
+
 
     }
 
