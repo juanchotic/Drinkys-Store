@@ -86,6 +86,8 @@ class LoginFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -241,7 +243,7 @@ class LoginFragment : Fragment() {
                 if (task.isSuccessful) {
                     // Sign in success, update UI with the signed-in user's information
                     val user = auth.currentUser
-                    viewGenery.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
+                    //viewGenery.findNavController().navigate(R.id.action_loginFragment_to_homeActivity)
                 } else {
                     // If sign in fails, display a message to the user.
                     Toast.makeText(requireContext().applicationContext, "Error de Autenticacion", Toast.LENGTH_LONG).show()
