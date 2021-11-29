@@ -11,7 +11,7 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:background="@color/doradoCenter"
+        android:background="@color/YellowBack"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="right">
@@ -22,7 +22,8 @@
             android:layout_marginLeft="20dp"
             android:layout_weight="2"
             android:text="DRINKYS"
-            android:textSize="33sp" />
+            android:textSize="33sp"
+            android:textColor="@color/black"/>
 
 
         <ImageButton

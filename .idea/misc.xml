@@ -11,17 +11,6 @@
         <entry key="..\:/Drinkys/app/src/main/res/layout/fragment_registro.xml" value="0.16893115942028986" />
         <entry key="..\:/Drinkys/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1" />
         <entry key="..\:/Drinkys/app/src/main/res/menu/toolbar_nav_menu.xml" value="0.1" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/drawable/ic_home.xml" value="0.240625" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/drawable/thema.xml" value="0.15989583333333332" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/layout/activity_home.xml" value="0.25" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/layout/activity_main.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/layout/fragment_login.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/layout/fragment_login_telefono.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/layout/fragment_product.xml" value="0.1" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/layout/fragment_registro.xml" value="0.19953703703703704" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/layout/fragment_test_v_home.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22447916666666667" />
-        <entry key="..\:/Users/jhoan david/Documents/Drikys/app/src/main/res/menu/toolbar_nav_menu.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/borde_button_other.xml" value="0.240625" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/drawable/borde_button_su.xml" value="0.22864583333333333" />
@@ -45,8 +34,36 @@
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/menu.xml" value="0.1953125" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/menu/menu_nav_bar.xml" value="0.25" />
         <entry key="..\:/Users/jhoan david/Documents/Drinky/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.21145833333333333" />
-        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/layout/activity_home.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/borde_button_other.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/borde_button_su.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/borde_edit_text.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/borde_layout_input.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/border_button_sn.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/boton_telefono.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/ic_home.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/ic_launcher_background.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/ic_menu_toolbar.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/ic_person.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/ic_phone.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/ic_search_toolbar.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/ic_shopping_toolbar.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/drawable/thema.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/layout/activity_home.xml" value="0.16799999999999998" />
         <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/layout/activity_main.xml" value="0.1793478260869565" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/layout/activity_splash_screen.xml" value="0.14375" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/layout/fragment_login.xml" value="0.14375" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/layout/fragment_login_telefono.xml" value="0.14375" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/layout/fragment_registro.xml" value="0.264" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/menu/bottom_nav_menu.xml" value="0.14375" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/menu/menu_nav_bar.xml" value="0.14375" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/menu/toolbar_nav_menu.xml" value="0.14375" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/mipmap-anydpi-v26/ic_google.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/mipmap-anydpi-v26/ic_google_round.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/mipmap-anydpi-v26/ic_logo.xml" value="0.15989583333333332" />
+        <entry key="..\:/Users/juan_/Documents/Drinkys-Store/app/src/main/res/mipmap-anydpi-v26/ic_logo_round.xml" value="0.15989583333333332" />
       </map>
     </option>
   </component>

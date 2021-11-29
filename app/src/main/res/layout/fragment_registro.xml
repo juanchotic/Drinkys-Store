@@ -27,7 +27,7 @@
                 android:layout_height="174dp"
                 android:layout_marginBottom="20dp"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/logo"
+                app:srcCompat="@mipmap/logo_sin_fondo"
                 tools:ignore="MissingConstraints"
                 tools:layout_editor_absoluteX="116dp" />
 
@@ -117,7 +117,8 @@
                     style="none"
                     android:layout_width="100dp"
                     android:layout_height="33dp"
-                    android:background="@drawable/border_button_sn"
+                    android:background="@color/YellowBack"
+                    android:textColor="@color/black"
                     android:text="SIGN UP"
                     android:textSize="14sp"
                     android:layout_marginLeft="15dp"
