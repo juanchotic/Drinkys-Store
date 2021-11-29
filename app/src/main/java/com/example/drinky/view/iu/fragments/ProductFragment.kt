@@ -55,19 +55,19 @@ class ProductFragment : Fragment() {
         verMasVino.setOnClickListener{
                 view: View ->
 
-            view.findNavController().navigate(R.id.action_productFragment_to_testVHomeFragment)
+            view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
 
         verMasAncheta.setOnClickListener{
                 view: View ->
 
-            view.findNavController().navigate(R.id.action_productFragment_to_testVHomeFragment)
+            view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
 
         verMasPopular.setOnClickListener{
                 view: View ->
 
-            view.findNavController().navigate(R.id.action_productFragment_to_testVHomeFragment)
+            view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
 
     }

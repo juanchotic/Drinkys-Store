@@ -44,11 +44,12 @@
         android:id="@+id/myNavHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
+        android:layout_height="625dp"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/home_nav"
         tools:layout_editor_absoluteX="0dp" />
+
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
