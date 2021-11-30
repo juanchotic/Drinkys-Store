@@ -49,7 +49,7 @@ class TestVHomeFragment : Fragment() {
 
         irHome.setOnClickListener {
             view : View ->
-            view.findNavController().navigate(R.id.action_testVHomeFragment_to_productFragment)
+            //view.findNavController().navigate(R.id.action_testVHomeFragment_to_productFragment)
         }
 
     }

@@ -17,6 +17,9 @@ import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorDestinationBuilder
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.example.drinky.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
@@ -30,6 +33,8 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var carritoCompra: ImageButton
     private lateinit var irAlogin: ImageButton
 
+    //private lateinit var binding: ActivityMainBinding
+
 
     //val navHostFragment = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
     //val navController = navHostFragment.navController
@@ -37,14 +42,16 @@ class HomeActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
-
-        carritoCompra = findViewById(R.id.btnCarritoCompra)
-        irAlogin = findViewById(R.id.irAlogin)
+        configNav ()
+        /*
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        configNav ()*/
 
         /*
-        carritoCompra.setOnClickListener {
-            navController.navigate(R.id.productFragment)
-        }*/
+        carritoCompra = findViewById(R.id.btnCarritoCompra)
+        irAlogin = findViewById(R.id.irAlogin)
 
 
         auth = Firebase.auth
@@ -62,9 +69,16 @@ class HomeActivity : AppCompatActivity() {
             startActivity(intent)
             finish();
             println("Donde esta el carrito")
-        }
+        }*/
 
+    }
 
+    fun configNav () {
+        val navHostFragnent = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
+        val navController = navHostFragnent.navController
+        findViewById<BottomNavigationView>(R.id.bottom_navigation).setupWithNavController(
+            navController
+        )
     }
 
     /*
