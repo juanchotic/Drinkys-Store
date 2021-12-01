@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.drinky.R
@@ -49,12 +50,31 @@ class ViewProductFragment : Fragment() {
         (element as ArrayList<ListElement>).add(15, ListElement( "Producto 16", 5800))
         (element as ArrayList<ListElement>).add(16, ListElement( "Producto 17", 5800))
 
-        val listAdapter = ListAdapter(element, requireContext())
+        val listAdapter = ListAdapter(element, requireContext(), ListAdapter.OnItemClickListener {
+
+            fun onItemClick(item: ListElement) {
+                moveToDescription(item)
+                view.findNavController().navigate(R.id.action_viewProductFragment_to_productDetailFragment)
+            }
+
+        })
 
         var recycleView : RecyclerView = view.findViewById(R.id.recycleViewProducto)
         recycleView.setHasFixedSize(true)
         recycleView.layoutManager = LinearLayoutManager(requireContext())
         recycleView.adapter = listAdapter
+
+    }
+
+    private fun moveToDescription(item:ListElement ){
+
+        var bundle = Bundle()
+
+        bundle.putString("nombre", item.nombre)
+        bundle.putString("precio", item.precio.toString())
+        bundle.putSerializable("item", item)
+
+        parentFragmentManager.setFragmentResult("key", bundle)
 
     }
 

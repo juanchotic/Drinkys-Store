@@ -3,12 +3,15 @@ package com.example.drinky.view.iu.clases;
 import android.graphics.drawable.Icon;
 import android.media.Image;
 
-public class ListElement {
+import java.io.Serializable;
+
+public class ListElement implements Serializable {
 
     private int idProducto;
     private Icon imagen;
     private String nombre;
     private int precio;
+    private String descripcion;
 
     public ListElement( String nombre, int precio) {
         this.nombre = nombre;
@@ -47,4 +50,11 @@ public class ListElement {
         this.idProducto = idProducto;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 }

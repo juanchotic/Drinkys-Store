@@ -5,46 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/doradoStar"
-        android:orientation="horizontal"
-        tools:ignore="MissingConstraints">
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/menu_toolbar"
-            android:layout_width="0dp"
-            android:layout_height="?attr/actionBarSize"
-            android:layout_weight="2"
-            app:navigationIcon="@drawable/ic_menu_toolbar" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/search_toolbar"
-            android:layout_width="54dp"
-            android:layout_height="match_parent"
-            app:navigationIcon="@drawable/ic_search_toolbar" />
-
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/car_tooolbar"
-            android:layout_width="wrap_content"
-            android:layout_height="?attr/actionBarSize"
-            app:navigationIcon="@drawable/ic_shopping_toolbar" />
-
-    </LinearLayout>
-
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_navigation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/doradoCenter"
-        app:itemIconTint="#BCBAB8"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:menu="@menu/bottom_nav_menu" />
-
     <ImageView
         android:id="@+id/imageView3"
         android:layout_width="117dp"
@@ -55,7 +15,7 @@
         tools:layout_editor_absoluteY="75dp" />
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnAddCarDetail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Añadir al carrito"
@@ -64,7 +24,7 @@
         tools:layout_editor_absoluteY="229dp" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/nombreTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -86,7 +46,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView6"
+        android:id="@+id/precioTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
@@ -97,7 +57,7 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/descTextView"
         android:layout_width="338dp"
         android:layout_height="134dp"
         android:text="TextView"
