@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_productFragment_to_viewProductFragment"
             app:destination="@id/viewProductFragment" />
+        <action
+            android:id="@+id/action_productFragment_to_carritoCompraFragment"
+            app:destination="@id/carritoCompraFragment" />
     </fragment>
 
     <fragment
@@ -25,10 +28,24 @@
         android:id="@+id/viewProductFragment"
         android:name="com.example.drinky.view.iu.fragments.ViewProductFragment"
         android:label="fragment_view_product"
-        tools:layout="@layout/fragment_view_product" >
+        tools:layout="@layout/fragment_view_product" />
+    <fragment
+        android:id="@+id/comentariosFragment"
+        android:name="com.example.drinky.view.iu.fragments.ComentariosFragment"
+        android:label="fragment_comentarios"
+        tools:layout="@layout/fragment_comentarios" >
         <action
-            android:id="@+id/action_viewProductFragment_to_testVHomeFragment"
+            android:id="@+id/action_comentariosFragment_to_testVHomeFragment"
             app:destination="@id/testVHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/carritoCompraFragment"
+        android:name="com.example.drinky.view.iu.fragments.CarritoCompraFragment"
+        android:label="fragment_carrito_compra"
+        tools:layout="@layout/fragment_carrito_compra" >
+        <action
+            android:id="@+id/action_carritoCompraFragment_to_comentariosFragment"
+            app:destination="@id/comentariosFragment" />
     </fragment>
 
 </navigation>

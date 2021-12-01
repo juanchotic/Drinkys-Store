@@ -30,7 +30,7 @@ class HomeActivity : AppCompatActivity() {
     //private lateinit var loginButton:Button
     private lateinit var auth: FirebaseAuth
 
-    private lateinit var carritoCompra: ImageButton
+    private lateinit var configuraciones: ImageButton
     private lateinit var irAlogin: ImageButton
 
     //private lateinit var binding: ActivityMainBinding
@@ -49,8 +49,16 @@ class HomeActivity : AppCompatActivity() {
         setContentView(view)
         configNav ()*/
 
+
+        configuraciones = findViewById(R.id.btnConfiguraciones)
+
+        configuraciones.setOnClickListener{
+            val intent = Intent(this, PersonActivity::class.java)
+            startActivity(intent)
+            finish();
+        }
+
         /*
-        carritoCompra = findViewById(R.id.btnCarritoCompra)
         irAlogin = findViewById(R.id.irAlogin)
 
 
@@ -63,13 +71,7 @@ class HomeActivity : AppCompatActivity() {
             finish();
         }
 
-        carritoCompra.setOnClickListener{
-            //Firebase.auth.signOut()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish();
-            println("Donde esta el carrito")
-        }*/
+       */
 
     }
 

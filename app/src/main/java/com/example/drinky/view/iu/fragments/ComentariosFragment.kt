@@ -5,8 +5,6 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
-import androidx.navigation.findNavController
 import com.example.drinky.R
 
 // TODO: Rename parameter arguments, choose names that match
@@ -16,18 +14,13 @@ private const val ARG_PARAM2 = "param2"
 
 /**
  * A simple [Fragment] subclass.
- * Use the [ProductFragment.newInstance] factory method to
+ * Use the [ComentariosFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class ProductFragment : Fragment() {
+class ComentariosFragment : Fragment() {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
-
-    private lateinit var verMasVino: Button
-    private lateinit var verMasAncheta: Button
-    private lateinit var verMasPopular: Button
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,34 +35,7 @@ class ProductFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_product, container, false)
-    }
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        verMasVino = view.findViewById(R.id.verMasVino)
-        verMasAncheta = view.findViewById(R.id.verMasAncheta)
-        verMasPopular = view.findViewById(R.id.verMasPopulare)
-
-        verMasVino.setOnClickListener{
-                view: View ->
-
-            view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
-        }
-
-        verMasAncheta.setOnClickListener{
-                view: View ->
-
-            view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
-        }
-
-        verMasPopular.setOnClickListener{
-                view: View ->
-
-            view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
-        }
-
+        return inflater.inflate(R.layout.fragment_comentarios, container, false)
     }
 
     companion object {
@@ -79,12 +45,12 @@ class ProductFragment : Fragment() {
          *
          * @param param1 Parameter 1.
          * @param param2 Parameter 2.
-         * @return A new instance of fragment ProductFragment.
+         * @return A new instance of fragment ComentariosFragment.
          */
         // TODO: Rename and change types and number of parameters
         @JvmStatic
         fun newInstance(param1: String, param2: String) =
-            ProductFragment().apply {
+            ComentariosFragment().apply {
                 arguments = Bundle().apply {
                     putString(ARG_PARAM1, param1)
                     putString(ARG_PARAM2, param2)

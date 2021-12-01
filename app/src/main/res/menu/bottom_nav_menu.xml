@@ -9,14 +9,19 @@
             android:title="home" />
 
         <item
-            android:id="@+id/testVHomeFragment"
-            android:icon="@drawable/ic_logo"
-            android:title="logo" />
+            android:id="@+id/carritoCompraFragment"
+            android:icon="@drawable/ic_shopping_toolbar"
+            android:title="Car" />
 
         <item
-            android:id="@+id/viewProductFragment"
-            android:icon="@drawable/ic_person"
-            android:title="person" />
+            android:id="@+id/comentariosFragment"
+            android:icon="@drawable/ic_comment"
+            android:title="comment" />
+
+        <item
+            android:id="@+id/testVHomeFragment"
+            android:icon="@drawable/ic_about_us"
+            android:title="about us" />
 
     </group>
 
