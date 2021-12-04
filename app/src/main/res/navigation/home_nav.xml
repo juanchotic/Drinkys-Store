@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_productFragment_to_carritoCompraFragment"
             app:destination="@id/carritoCompraFragment" />
+        <action
+            android:id="@+id/action_productFragment_to_productDetailFragment"
+            app:destination="@id/productDetailFragment" />
     </fragment>
 
     <fragment
@@ -32,6 +35,9 @@
         <action
             android:id="@+id/action_viewProductFragment_to_productDetailFragment"
             app:destination="@id/productDetailFragment" />
+        <action
+            android:id="@+id/action_viewProductFragment_to_productFragment"
+            app:destination="@id/productFragment" />
     </fragment>
     <fragment
         android:id="@+id/comentariosFragment"
@@ -54,6 +60,10 @@
     <fragment
         android:id="@+id/productDetailFragment"
         android:name="com.example.drinky.view.iu.fragments.ProductDetailFragment"
-        android:label="ProductDetailFragment" />
+        android:label="ProductDetailFragment" >
+        <action
+            android:id="@+id/action_productDetailFragment_to_viewProductFragment"
+            app:destination="@id/viewProductFragment" />
+    </fragment>
 
 </navigation>

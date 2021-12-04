@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/loginFragment">
+    app:startDestination="@id/homeLoginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -54,5 +54,20 @@
         <action
             android:id="@+id/action_loginTelefonoFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeLoginFragment"
+        android:name="com.example.drinky.view.iu.fragments.HomeLoginFragment"
+        android:label="fragment_home_login"
+        tools:layout="@layout/fragment_home_login" >
+        <action
+            android:id="@+id/action_homeLoginFragment_to_loginFragment"
+            app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_homeLoginFragment_to_registroFragment"
+            app:destination="@id/registroFragment" />
+        <action
+            android:id="@+id/action_homeLoginFragment_to_homeActivity"
+            app:destination="@id/homeActivity" />
     </fragment>
 </navigation>

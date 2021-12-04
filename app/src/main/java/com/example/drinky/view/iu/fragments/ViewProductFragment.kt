@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageButton
+import android.widget.Toast
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -13,9 +15,11 @@ import com.example.drinky.view.iu.clases.ListAdapter
 import com.example.drinky.view.iu.clases.ListElement
 
 
-class ViewProductFragment : Fragment() {
+class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
 
     private lateinit var element : List<ListElement>
+
+    private lateinit var btnBackIni : ImageButton
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +32,14 @@ class ViewProductFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         init(view);
+
+        btnBackIni = view.findViewById(R.id.btnBackIni)
+
+        btnBackIni.setOnClickListener {
+                view : View ->
+            view.findNavController().navigate(R.id.action_viewProductFragment_to_productFragment)
+        }
+
 
     }
 
@@ -50,14 +62,7 @@ class ViewProductFragment : Fragment() {
         (element as ArrayList<ListElement>).add(15, ListElement( "Producto 16", 5800))
         (element as ArrayList<ListElement>).add(16, ListElement( "Producto 17", 5800))
 
-        val listAdapter = ListAdapter(element, requireContext(), ListAdapter.OnItemClickListener {
-
-            fun onItemClick(item: ListElement) {
-                moveToDescription(item)
-                view.findNavController().navigate(R.id.action_viewProductFragment_to_productDetailFragment)
-            }
-
-        })
+        val listAdapter = ListAdapter(element, requireContext(), this)
 
         var recycleView : RecyclerView = view.findViewById(R.id.recycleViewProducto)
         recycleView.setHasFixedSize(true)
@@ -88,5 +93,19 @@ class ViewProductFragment : Fragment() {
 
     companion object {
 
+    }
+
+    override fun onItemClick(itemElemen: ListElement) {
+        println("Has dado click en " + itemElemen.nombre)
+
+        var bundle = Bundle()
+
+        bundle.putString("nombre", itemElemen.nombre)
+        bundle.putString("precio", itemElemen.precio.toString())
+        bundle.putString("image", itemElemen.imagen)
+
+        parentFragmentManager.setFragmentResult("key", bundle)
+
+        view?.findNavController()?.navigate(R.id.action_viewProductFragment_to_productDetailFragment)
     }
 }

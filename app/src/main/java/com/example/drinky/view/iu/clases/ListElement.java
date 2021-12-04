@@ -8,7 +8,7 @@ import java.io.Serializable;
 public class ListElement implements Serializable {
 
     private int idProducto;
-    private Icon imagen;
+    private String imagen;
     private String nombre;
     private int precio;
     private String descripcion;
@@ -18,11 +18,11 @@ public class ListElement implements Serializable {
         this.precio = precio;
     }
 
-    public Icon getImagen() {
+    public String getImagen() {
         return imagen;
     }
 
-    public void setImagen(Icon imagen) {
+    public void setImagen(String imagen) {
         this.imagen = imagen;
     }
 
