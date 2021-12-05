@@ -36,6 +36,8 @@ class LoginFragment : Fragment() {
     private lateinit var btnOlvPass:Button
     private lateinit var btnGoogle:ImageButton
 
+    private lateinit var btnBackHome : ImageButton
+
     private lateinit var auth: FirebaseAuth
 
     private val GOOGLE_SIGN_IN = 9001
@@ -52,12 +54,6 @@ class LoginFragment : Fragment() {
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
-        var currentUser = auth.getCurrentUser()
-        updateUI(currentUser);
-    }
-
-    private fun updateUI(user: FirebaseUser?) {
 
     }
 
@@ -83,6 +79,7 @@ class LoginFragment : Fragment() {
         btnPhone = view.findViewById(R.id.btnTelefono)
         btnOlvPass = view.findViewById(R.id.btnOlvidePass)
         btnGoogle = view.findViewById(R.id.btnGoogle)
+        btnBackHome = view.findViewById(R.id.btnBackHomeLogin)
 
         val currentUser = auth.currentUser
         if(currentUser != null){
@@ -119,6 +116,11 @@ class LoginFragment : Fragment() {
         btnOlvPass.setOnClickListener{
                 view: View ->
             println("boton Olvide contraseña")
+        }
+
+        btnBackHome.setOnClickListener{
+                view: View ->
+            view.findNavController().navigate(R.id.action_loginFragment_to_personActivity)
         }
 
     }

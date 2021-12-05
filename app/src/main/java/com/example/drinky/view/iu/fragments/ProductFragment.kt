@@ -18,16 +18,23 @@ import com.example.drinky.view.iu.clases.ListElement
 class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
     private lateinit var element : List<ListElement>
+    private lateinit var elementVinos : List<ListElement>
+    private lateinit var elementAnchetas : List<ListElement>
+    private lateinit var elementPopulares : List<ListElement>
 
     private lateinit var verMasVino: Button
     private lateinit var verMasAncheta: Button
     private lateinit var verMasPopular: Button
+    private lateinit var verMasTodos: Button
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         element = ArrayList<ListElement>()
+        elementVinos = ArrayList<ListElement>()
+        elementAnchetas = ArrayList<ListElement>()
+        elementPopulares = ArrayList<ListElement>()
 
     }
 
@@ -47,10 +54,15 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         verMasVino = view.findViewById(R.id.verMasVino)
         verMasAncheta = view.findViewById(R.id.verMasAncheta)
         verMasPopular = view.findViewById(R.id.verMasPopulare)
+        verMasTodos = view.findViewById(R.id.verMasTodo)
 
 
         verMasVino.setOnClickListener{
                 view: View ->
+
+            var bundle = Bundle()
+            bundle.putString("typeDate", "verVino")
+            parentFragmentManager.setFragmentResult("key", bundle)
 
             view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
@@ -58,18 +70,138 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         verMasAncheta.setOnClickListener{
                 view: View ->
 
+            var bundle = Bundle()
+            bundle.putString("typeDate", "verAncheta")
+            parentFragmentManager.setFragmentResult("key", bundle)
+
             view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
 
         verMasPopular.setOnClickListener{
                 view: View ->
 
+            var bundle = Bundle()
+            bundle.putString("typeDate", "verPopulare")
+            parentFragmentManager.setFragmentResult("key", bundle)
+
+            view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
+        }
+
+        verMasTodos.setOnClickListener{
+                view: View ->
+
+            var bundle = Bundle()
+            bundle.putString("typeDate", "verTodos")
+            parentFragmentManager.setFragmentResult("key", bundle)
+
             view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
 
     }
 
-    private fun init(view:View) {
+    private fun llenarDatos( ){
+
+        var desp : String = " awdazvzd wafwf wf afrew dkdnDN N I QIANDO DANFIA NFANINAOW FKWANFU V HEBG Uk cajfbu i ndafjiwebguvjnvuin vvjvuinv wbnf  vww bgiefjafnwiefn fwfn weiofnewn cwjenfwiuenf ej jewnf ij fwqk fweijnanbfwfw foiweanf efwioefn iuwnqakofnweiefvkmvs fnoiwfskl, kn foiwnm "
+
+        for (i in 1..50){
+
+            if( i % 3 == 0 ){
+
+                var nom = "anchetas " + i
+
+                if( i % 4 == 0 ){
+
+                    // Populares anchetas
+                    (element as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            true,
+                            nom,
+                            "ancheta",
+                            "El producto " + nom + desp ))
+
+                    (elementAnchetas as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            true,
+                            nom,
+                            "ancheta",
+                            "El producto " + nom + desp ))
+
+                    (elementPopulares as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            true,
+                            nom,
+                            "ancheta",
+                            "El producto " + nom + desp ))
+
+                }
+                else{
+                    (element as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            false,
+                            nom,
+                            "ancheta",
+                            "El producto " + nom + desp ))
+
+                    (elementAnchetas as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            false,
+                            nom,
+                            "ancheta",
+                            "El producto " + nom + desp ))
+
+                }
+
+            }
+            else{
+
+                var nom = "vinos " + i
+
+                if( i % 4 == 0 ){
+                    // Populares vinos
+                    (element as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            true,
+                            nom,
+                            "vino",
+                            "El producto " + nom + desp ))
+
+                    (elementVinos as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            true,
+                            nom,
+                            "vino",
+                            "El producto " + nom + desp ))
+
+                    (elementPopulares as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            true,
+                            nom,
+                            "vino",
+                            "El producto " + nom + desp ))
+
+                }
+                else{
+                    (element as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            false,
+                            nom,
+                            "vino",
+                            "El producto " + nom + desp ))
+
+                    (elementVinos as ArrayList<ListElement>).add(0,
+                        ListElement(500*i,
+                            true,
+                            nom,
+                            "vino",
+                            "El producto " + nom + desp ))
+
+                }
+
+            }
+
+        }
+
+        /*
         (element as ArrayList<ListElement>).add(0, ListElement( "Producto 1", 500))
         (element as ArrayList<ListElement>).add(1, ListElement( "Producto 2", 600))
         (element as ArrayList<ListElement>).add(2, ListElement( "Producto 3", 700))
@@ -86,25 +218,39 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         (element as ArrayList<ListElement>).add(13, ListElement( "Producto 14", 5800))
         (element as ArrayList<ListElement>).add(14, ListElement( "Producto 15", 5800))
         (element as ArrayList<ListElement>).add(15, ListElement( "Producto 16", 5800))
-        (element as ArrayList<ListElement>).add(16, ListElement( "Producto 17", 5800))
+        (element as ArrayList<ListElement>).add(16, ListElement( "Producto 17", 5800))*/
+
+    }
+
+    private fun init(view:View) {
+
+        llenarDatos()
 
         val listAdapterHome = ListAdapterHome(element, requireContext(), this)
+        val listAdapterHomeAnchetas = ListAdapterHome(elementAnchetas, requireContext(), this)
+        val listAdapterHomeVinos = ListAdapterHome(elementVinos, requireContext(), this)
+        val listAdapterHomePopulares = ListAdapterHome(elementPopulares, requireContext(), this)
 
         var recycleViewPopular : RecyclerView = view.findViewById(R.id.recycleViewProductoPopulare)
         recycleViewPopular.setHasFixedSize(true)
         recycleViewPopular.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycleViewPopular.adapter = listAdapterHome
+        recycleViewPopular.adapter = listAdapterHomePopulares
 
 
         var recycleViewVino : RecyclerView = view.findViewById(R.id.recycleViewProductoVinos)
         recycleViewVino.setHasFixedSize(true)
         recycleViewVino.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycleViewVino.adapter = listAdapterHome
+        recycleViewVino.adapter = listAdapterHomeVinos
 
         var recycleViewAncheta : RecyclerView = view.findViewById(R.id.recycleViewProductoAnchetas)
         recycleViewAncheta.setHasFixedSize(true)
         recycleViewAncheta.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycleViewAncheta.adapter = listAdapterHome
+        recycleViewAncheta.adapter = listAdapterHomeAnchetas
+
+        var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewProductoTodos)
+        recycleViewTodos.setHasFixedSize(true)
+        recycleViewTodos.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+        recycleViewTodos.adapter = listAdapterHome
 
     }
 
@@ -115,6 +261,10 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
         bundle.putString("nombre", itemElemen.nombre)
         bundle.putString("precio", itemElemen.precio.toString())
+        bundle.putString("despc", itemElemen.descripcion)
+
+        bundle.putString("volverA", "Home")
+        bundle.putString("typeDatePV", "null")
 
         parentFragmentManager.setFragmentResult("key", bundle)
 

@@ -36,6 +36,8 @@ class RegistroFragment : Fragment() {
     private lateinit var btnSignIn:Button
     private lateinit var btnPhone:ImageButton
 
+    private lateinit var btnBackHome:ImageButton
+
     private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -80,6 +82,7 @@ class RegistroFragment : Fragment() {
         btnSignIn = view.findViewById(R.id.btnSignInR)
         btnSignUp = view.findViewById(R.id.btnSignUpR)
         btnPhone = view.findViewById(R.id.btnTelefonoR)
+        btnBackHome = view.findViewById(R.id.btnBackHomeRegiste)
 
         btnSignIn.setOnClickListener{
                 view: View ->
@@ -101,6 +104,10 @@ class RegistroFragment : Fragment() {
             view.findNavController().navigate(R.id.action_registroFragment_to_loginTelefonoFragment)
         }
 
+        btnBackHome.setOnClickListener{
+                view: View ->
+            view.findNavController().navigate(R.id.action_registroFragment_to_personActivity)
+        }
 
     }
 

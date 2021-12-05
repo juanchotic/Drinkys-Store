@@ -8,7 +8,6 @@
     android:background="@android:color/transparent"
     tools:context=".view.iu.fragments.ProductFragment">
 
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -17,13 +16,17 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:layout_marginTop="5dp"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:orientation="vertical">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/doradoStar"
-                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:layout_margin="5dp"
                 android:orientation="vertical"
                 >
 
@@ -41,8 +44,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Mas Populares"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="2"
+                        android:textColor="@color/doradoStar"
                         android:textSize="25sp"/>
 
                     <Button
@@ -51,7 +55,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:text="ver mas >"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
@@ -61,15 +65,13 @@
                     android:layout_height="match_parent"
                     android:orientation="horizontal"/>
 
-
-
             </LinearLayout>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/doradoStar"
-                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:layout_margin="5dp"
                 android:orientation="vertical"
                 >
 
@@ -87,8 +89,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Vinos"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="2"
+                        android:textColor="@color/doradoStar"
                         android:textSize="25sp"/>
 
                     <Button
@@ -97,7 +100,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:text="ver mas >"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
@@ -111,8 +114,8 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/doradoStar"
-                android:layout_margin="10dp"
+                android:background="@android:color/transparent"
+                android:layout_margin="5dp"
                 android:orientation="vertical"
                 >
 
@@ -130,8 +133,9 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Anchetas"
-                        android:layout_marginLeft="10dp"
+                        android:layout_marginLeft="15dp"
                         android:layout_weight="2"
+                        android:textColor="@color/doradoStar"
                         android:textSize="25sp"/>
 
                     <Button
@@ -140,18 +144,60 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:text="ver mas >"
-                        android:textColor="@color/black"/>
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/recycleViewProductoAnchetas"
                     android:layout_width="match_parent"
-                    android:layout_height="match_parent" />
+                    android:layout_height="match_parent"/>
 
             </LinearLayout>
 
-            -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:layout_margin="5dp"
+                android:orientation="vertical"
+                >
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@android:color/transparent"
+                    android:layout_margin="5dp"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="0dp"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Productos"
+                        android:layout_marginLeft="15dp"
+                        android:layout_weight="2"
+                        android:textColor="@color/doradoStar"
+                        android:textSize="25sp"/>
+
+                    <Button
+                        android:id="@+id/verMasTodo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:text="ver mas >"
+                        android:textColor="@color/white"/>
+
+                </LinearLayout>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recycleViewProductoTodos"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"/>
+
+            </LinearLayout>
 
         </LinearLayout>
 

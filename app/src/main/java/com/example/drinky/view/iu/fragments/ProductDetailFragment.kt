@@ -26,17 +26,27 @@ class ProductDetailFragment : Fragment() {
     private lateinit var btnAddCar : Button
     private lateinit var btnBackhome: ImageButton
 
+    private lateinit var typeDate : String
+    private lateinit var retornarA : String
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        typeDate = ""
+        retornarA = ""
 
         parentFragmentManager.setFragmentResultListener(
             "key",
             this,
             FragmentResultListener { requestKey: String, bundle: Bundle ->
 
+                typeDate  = bundle.getString("typeDate").toString()
+                retornarA  = bundle.getString("volverA").toString()
+
                 nombreProduct.text = bundle.getString("nombre")
                 precioProduct.text = bundle.getString("precio")
-                descProduct.text = ("El producto " + bundle.getString("nombre") + " Cuesta " + bundle.getString("precio"))
+                descProduct.text = bundle.getString("despc")
+
 
             })
 
@@ -62,7 +72,17 @@ class ProductDetailFragment : Fragment() {
 
         btnBackhome.setOnClickListener {
             view : View ->
-            view.findNavController().navigate(R.id.action_productDetailFragment_to_viewProductFragment)
+
+            if( retornarA == "Home" ){
+                view.findNavController().navigate(R.id.action_productDetailFragment_to_productFragment)
+            }
+            else if( retornarA == "ProductView" ){
+                var bundle = Bundle()
+                bundle.putString("typeDate", typeDate)
+                parentFragmentManager.setFragmentResult("key", bundle)
+                view.findNavController().navigate(R.id.action_productDetailFragment_to_viewProductFragment)
+            }
+
         }
 
 

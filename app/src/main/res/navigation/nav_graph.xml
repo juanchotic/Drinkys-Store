@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/homeLoginFragment">
+    app:startDestination="@id/loginFragment">
 
     <fragment
         android:id="@+id/loginFragment"
@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_loginFragment_to_loginTelefonoFragment"
             app:destination="@id/loginTelefonoFragment" />
+        <action
+            android:id="@+id/action_loginFragment_to_personActivity"
+            app:destination="@id/personActivity" />
     </fragment>
     <fragment
         android:id="@+id/registroFragment"
@@ -34,6 +37,9 @@
         <action
             android:id="@+id/action_registroFragment_to_loginTelefonoFragment"
             app:destination="@id/loginTelefonoFragment" />
+        <action
+            android:id="@+id/action_registroFragment_to_personActivity"
+            app:destination="@id/personActivity" />
     </fragment>
     <activity
         android:id="@+id/homeActivity"
@@ -54,20 +60,13 @@
         <action
             android:id="@+id/action_loginTelefonoFragment_to_loginFragment"
             app:destination="@id/loginFragment" />
+        <action
+            android:id="@+id/action_loginTelefonoFragment_to_personActivity"
+            app:destination="@id/personActivity" />
     </fragment>
-    <fragment
-        android:id="@+id/homeLoginFragment"
-        android:name="com.example.drinky.view.iu.fragments.HomeLoginFragment"
-        android:label="fragment_home_login"
-        tools:layout="@layout/fragment_home_login" >
-        <action
-            android:id="@+id/action_homeLoginFragment_to_loginFragment"
-            app:destination="@id/loginFragment" />
-        <action
-            android:id="@+id/action_homeLoginFragment_to_registroFragment"
-            app:destination="@id/registroFragment" />
-        <action
-            android:id="@+id/action_homeLoginFragment_to_homeActivity"
-            app:destination="@id/homeActivity" />
-    </fragment>
+    <activity
+        android:id="@+id/personActivity"
+        android:name="com.example.drinky.view.iu.activities.PersonActivity"
+        android:label="activity_person"
+        tools:layout="@layout/activity_person" />
 </navigation>

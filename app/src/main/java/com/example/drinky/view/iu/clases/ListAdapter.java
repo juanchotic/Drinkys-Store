@@ -59,14 +59,14 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     public class ViewHolder extends  RecyclerView.ViewHolder{
         ImageView iconImage;
         TextView nombre, precio;
-        ImageButton addCar;
+        //ImageButton addCar;
 
         ViewHolder( View itemsView ){
             super(itemsView);
             iconImage = itemsView.findViewById(R.id.iconImageView);
             nombre = itemsView.findViewById(R.id.nombreProducto);
             precio = itemsView.findViewById(R.id.precioProducto);
-            addCar = itemsView.findViewById(R.id.btnAddCar);
+            //addCar = itemsView.findViewById(R.id.btnAddCar);
         }
 
         void bindData(final ListElement item){

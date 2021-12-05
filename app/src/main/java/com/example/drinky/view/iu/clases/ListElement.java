@@ -7,15 +7,44 @@ import java.io.Serializable;
 
 public class ListElement implements Serializable {
 
-    private int idProducto;
-    private String imagen;
-    private String nombre;
-    private int precio;
-    private String descripcion;
+    private int idProducto, precio;
+    private boolean popular;
+    private String imagen, nombre, categoria, descripcion;
 
     public ListElement( String nombre, int precio) {
         this.nombre = nombre;
         this.precio = precio;
+        this.popular = false;
+        this.descripcion = "";
+        this.categoria = "";
+        this.idProducto = 0;
+    }
+
+    public ListElement(int precio, String nombre, String categoria, String descripcion) {
+        this.precio = precio;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+        this.popular = false;
+    }
+
+    public ListElement(int precio, boolean popular, String nombre, String categoria, String descripcion) {
+        this.idProducto = 0;
+        this.precio = precio;
+        this.popular = popular;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+    }
+
+    public ListElement(int idProducto, int precio, boolean popular, String imagen, String nombre, String categoria, String descripcion) {
+        this.idProducto = idProducto;
+        this.precio = precio;
+        this.popular = popular;
+        this.imagen = imagen;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
     }
 
     public String getImagen() {
@@ -56,5 +85,21 @@ public class ListElement implements Serializable {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public boolean isPopular() {
+        return popular;
+    }
+
+    public void setPopular(boolean popular) {
+        this.popular = popular;
     }
 }
