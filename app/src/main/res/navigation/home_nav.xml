@@ -47,6 +47,9 @@
         <action
             android:id="@+id/action_comentariosFragment_to_testVHomeFragment"
             app:destination="@id/testVHomeFragment" />
+        <action
+            android:id="@+id/action_comentariosFragment_to_crearComentario"
+            app:destination="@id/crearComentario" />
     </fragment>
     <fragment
         android:id="@+id/carritoCompraFragment"
@@ -67,6 +70,15 @@
         <action
             android:id="@+id/action_productDetailFragment_to_productFragment"
             app:destination="@id/productFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/crearComentario"
+        android:name="com.example.drinky.view.iu.fragments.CrearComentario"
+        android:label="fragment_crear_comentario"
+        tools:layout="@layout/fragment_crear_comentario" >
+        <action
+            android:id="@+id/action_crearComentario_to_comentariosFragment"
+            app:destination="@id/comentariosFragment" />
     </fragment>
 
 </navigation>
