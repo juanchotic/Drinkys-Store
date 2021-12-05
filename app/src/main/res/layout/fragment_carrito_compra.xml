@@ -3,7 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    tools:context=".view.iu.fragments.CarritoCompraFragment">
 
     <Button
         android:id="@+id/button"
@@ -58,7 +59,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="206dp" />
+        tools:layout_editor_absoluteY="206dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView16"
@@ -68,7 +70,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="250dp" />
+        tools:layout_editor_absoluteY="250dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView12"
@@ -78,7 +81,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="206dp" />
+        tools:layout_editor_absoluteY="206dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView15"
@@ -89,7 +93,8 @@
         android:textStyle="bold"
         tools:layout_editor_absoluteX="32dp"
         tools:layout_editor_absoluteY="277dp"
-        tools:text="15/12/2021" />
+        tools:text="15/12/2021"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView5"
@@ -99,7 +104,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="179dp" />
+        tools:layout_editor_absoluteY="179dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView17"
@@ -109,7 +115,8 @@
         android:textSize="14sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="277dp" />
+        tools:layout_editor_absoluteY="277dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView11"
@@ -119,7 +126,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="205dp"
-        tools:layout_editor_absoluteY="179dp" />
+        tools:layout_editor_absoluteY="179dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView14"
@@ -129,7 +137,8 @@
         android:textSize="20sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="250dp" />
+        tools:layout_editor_absoluteY="250dp"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView8"
@@ -139,7 +148,8 @@
         android:textSize="16sp"
         android:textStyle="bold"
         tools:layout_editor_absoluteX="30dp"
-        tools:layout_editor_absoluteY="337dp" />
+        tools:layout_editor_absoluteY="337dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView11"
@@ -149,7 +159,8 @@
         android:scaleY="5"
         app:srcCompat="@android:drawable/bottom_bar"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="321dp" />
+        tools:layout_editor_absoluteY="321dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView13"
@@ -161,7 +172,8 @@
         app:layout_constraintHorizontal_bias="0.533"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/bottom_bar"
-        tools:layout_editor_absoluteY="581dp" />
+        tools:layout_editor_absoluteY="581dp"
+        tools:ignore="MissingConstraints" />
 
     <ImageView
         android:id="@+id/imageView12"
@@ -171,12 +183,14 @@
         android:scaleY="5"
         app:srcCompat="@android:drawable/bottom_bar"
         tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="155dp" />
+        tools:layout_editor_absoluteY="155dp"
+        tools:ignore="MissingConstraints" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="133dp"
         android:layout_height="180dp"
         tools:layout_editor_absoluteX="32dp"
-        tools:layout_editor_absoluteY="366dp" />
+        tools:layout_editor_absoluteY="366dp"
+        tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
