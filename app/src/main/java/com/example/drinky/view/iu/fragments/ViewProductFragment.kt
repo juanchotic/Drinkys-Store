@@ -19,15 +19,12 @@ import com.example.drinky.view.iu.clases.ListAdapterHome
 import com.example.drinky.view.iu.clases.ListElement
 
 
-class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
+class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  {
 
     private lateinit var element : List<ListElement>
-    private lateinit var elementVinos : List<ListElement>
-    private lateinit var elementAnchetas : List<ListElement>
-    private lateinit var elementPopulares : List<ListElement>
+    private lateinit var elementFiltros : List<ListElement>
 
     private lateinit var btnBackIni : ImageButton
-    private lateinit var nombreProducto : TextView
 
     private lateinit var typeDatos : String
 
@@ -35,34 +32,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
         super.onCreate(savedInstanceState)
 
         element = ArrayList<ListElement>()
-        elementVinos = ArrayList<ListElement>()
-        elementAnchetas = ArrayList<ListElement>()
-        elementPopulares = ArrayList<ListElement>()
-
-        typeDatos = ""
-
-        parentFragmentManager.setFragmentResultListener(
-            "key",
-            this,
-            FragmentResultListener { requestKey: String, bundle: Bundle ->
-
-                typeDatos  = bundle.getString("typeDate").toString()
-
-                if(typeDatos == "verVino"){
-                    nombreProducto.text = "Vinos"
-                }
-                else if(typeDatos == "verAncheta"){
-                    nombreProducto.text = "Anchetas"
-                }
-                else if(typeDatos == "verPopulare"){
-                    nombreProducto.text = "Populares"
-                }
-                else{
-                    nombreProducto.text = "Productos"
-                }
-
-
-            })
+        elementFiltros = ArrayList<ListElement>()
 
     }
 
@@ -70,7 +40,6 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
         super.onViewCreated(view, savedInstanceState)
 
         btnBackIni = view.findViewById(R.id.btnBackIni)
-        nombreProducto = view.findViewById(R.id.nombreProductoVP)
 
         init(view);
 
@@ -86,7 +55,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
 
         var desp : String = " awdazvzd wafwf wf afrew dkdnDN N I QIANDO DANFIA NFANINAOW FKWANFU V HEBG Uk cajfbu i ndafjiwebguvjnvuin vvjvuinv wbnf  vww bgiefjafnwiefn fwfn weiofnewn cwjenfwiuenf ej jewnf ij fwqk fweijnanbfwfw foiweanf efwioefn iuwnqakofnweiefvkmvs fnoiwfskl, kn foiwnm "
 
-        for (i in 1..50){
+        for (i in 0..50){
 
             if( i % 3 == 0 ){
 
@@ -95,21 +64,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
                 if( i % 4 == 0 ){
 
                     // Populares anchetas
-                    (element as ArrayList<ListElement>).add(0,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    (elementAnchetas as ArrayList<ListElement>).add(0,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    (elementPopulares as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             true,
                             nom,
@@ -118,14 +73,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
 
                 }
                 else{
-                    (element as ArrayList<ListElement>).add(0,
-                        ListElement(500*i,
-                            false,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    (elementAnchetas as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             false,
                             nom,
@@ -141,21 +89,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
 
                 if( i % 4 == 0 ){
                     // Populares vinos
-                    (element as ArrayList<ListElement>).add(0,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    (elementVinos as ArrayList<ListElement>).add(0,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    (elementPopulares as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             true,
                             nom,
@@ -164,16 +98,9 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
 
                 }
                 else{
-                    (element as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             false,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    (elementVinos as ArrayList<ListElement>).add(0,
-                        ListElement(500*i,
-                            true,
                             nom,
                             "vino",
                             "El producto " + nom + desp ))
@@ -184,69 +111,18 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
 
         }
 
-        /*
-        (element as ArrayList<ListElement>).add(0, ListElement( "Producto 1", 500))
-        (element as ArrayList<ListElement>).add(1, ListElement( "Producto 2", 600))
-        (element as ArrayList<ListElement>).add(2, ListElement( "Producto 3", 700))
-        (element as ArrayList<ListElement>).add(3, ListElement( "Producto 4", 800))
-        (element as ArrayList<ListElement>).add(4, ListElement( "Producto 5", 1000))
-        (element as ArrayList<ListElement>).add(5, ListElement( "Producto 6", 5800))
-        (element as ArrayList<ListElement>).add(6, ListElement( "Producto 7", 5800))
-        (element as ArrayList<ListElement>).add(7, ListElement( "Producto 8", 5800))
-        (element as ArrayList<ListElement>).add(8, ListElement( "Producto 9", 5800))
-        (element as ArrayList<ListElement>).add(9, ListElement( "Producto 10", 5800))
-        (element as ArrayList<ListElement>).add(10, ListElement( "Producto 11", 5800))
-        (element as ArrayList<ListElement>).add(11, ListElement( "Producto 12", 5800))
-        (element as ArrayList<ListElement>).add(12, ListElement( "Producto 13", 5800))
-        (element as ArrayList<ListElement>).add(13, ListElement( "Producto 14", 5800))
-        (element as ArrayList<ListElement>).add(14, ListElement( "Producto 15", 5800))
-        (element as ArrayList<ListElement>).add(15, ListElement( "Producto 16", 5800))
-        (element as ArrayList<ListElement>).add(16, ListElement( "Producto 17", 5800))*/
-
     }
 
     private fun init(view:View) {
 
         llenarDatos()
 
-        val listAdapter = ListAdapter(element, requireContext(), this)
-        val listAdapterHomeAnchetas = ListAdapter(elementAnchetas, requireContext(), this)
-        val listAdapterHomeVinos = ListAdapter(elementVinos, requireContext(), this)
-        val listAdapterHomePopulares = ListAdapter(elementPopulares, requireContext(), this)
+        val listAdapter : ListAdapter = ListAdapter(element, requireContext(), this)
 
-
-        if(typeDatos == "verVino"){
-
-            var recycleViewVino : RecyclerView = view.findViewById(R.id.recycleViewProducto)
-            recycleViewVino.setHasFixedSize(true)
-            recycleViewVino.layoutManager = GridLayoutManager(requireContext(), 2)
-            recycleViewVino.adapter = listAdapterHomeVinos
-
-        }
-        else if(typeDatos == "verAncheta"){
-
-            var recycleViewAncheta : RecyclerView = view.findViewById(R.id.recycleViewProducto)
-            recycleViewAncheta.setHasFixedSize(true)
-            recycleViewAncheta.layoutManager = GridLayoutManager(requireContext(), 2)
-            recycleViewAncheta.adapter = listAdapterHomeAnchetas
-
-        }
-        else if(typeDatos == "verPopulare"){
-
-            var recycleViewPopular : RecyclerView = view.findViewById(R.id.recycleViewProducto)
-            recycleViewPopular.setHasFixedSize(true)
-            recycleViewPopular.layoutManager = GridLayoutManager(requireContext(), 2)
-            recycleViewPopular.adapter = listAdapterHomePopulares
-
-        }
-        else{
-
-            var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewProducto)
-            recycleViewTodos.setHasFixedSize(true)
-            recycleViewTodos.layoutManager = GridLayoutManager(requireContext(), 2)
-            recycleViewTodos.adapter = listAdapter
-
-        }
+        var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewProducto)
+        recycleViewTodos.setHasFixedSize(true)
+        recycleViewTodos.layoutManager = GridLayoutManager(requireContext(), 2)
+        recycleViewTodos.adapter = listAdapter
 
     }
 
@@ -262,7 +138,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
 
     }
 
-    override fun onItemClick(itemElemen: ListElement) {
+    override fun onItemClickProduct(itemElemen: ListElement) {
         println("Has dado click en " + itemElemen.nombre)
 
         var bundle = Bundle()
@@ -272,7 +148,6 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListener  {
         bundle.putString("despc", itemElemen.descripcion)
 
         bundle.putString("volverA", "ProductView")
-        //bundle.putString("typeDatePV", typeDatos)
 
         parentFragmentManager.setFragmentResult("key", bundle)
 

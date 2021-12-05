@@ -60,19 +60,11 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         verMasVino.setOnClickListener{
                 view: View ->
 
-            var bundle = Bundle()
-            bundle.putString("typeDate", "verVino")
-            parentFragmentManager.setFragmentResult("key", bundle)
-
             view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
 
         verMasAncheta.setOnClickListener{
                 view: View ->
-
-            var bundle = Bundle()
-            bundle.putString("typeDate", "verAncheta")
-            parentFragmentManager.setFragmentResult("key", bundle)
 
             view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
@@ -80,19 +72,11 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         verMasPopular.setOnClickListener{
                 view: View ->
 
-            var bundle = Bundle()
-            bundle.putString("typeDate", "verPopulare")
-            parentFragmentManager.setFragmentResult("key", bundle)
-
             view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
 
         verMasTodos.setOnClickListener{
                 view: View ->
-
-            var bundle = Bundle()
-            bundle.putString("typeDate", "verTodos")
-            parentFragmentManager.setFragmentResult("key", bundle)
 
             view.findNavController().navigate(R.id.action_productFragment_to_viewProductFragment)
         }
@@ -103,7 +87,10 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
         var desp : String = " awdazvzd wafwf wf afrew dkdnDN N I QIANDO DANFIA NFANINAOW FKWANFU V HEBG Uk cajfbu i ndafjiwebguvjnvuin vvjvuinv wbnf  vww bgiefjafnwiefn fwfn weiofnewn cwjenfwiuenf ej jewnf ij fwqk fweijnanbfwfw foiweanf efwioefn iuwnqakofnweiefvkmvs fnoiwfskl, kn foiwnm "
 
-        for (i in 1..50){
+        var vino = 0
+        var anche = 0
+        var populare = 0
+        for (i in 0..50){
 
             if( i % 3 == 0 ){
 
@@ -112,42 +99,47 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                 if( i % 4 == 0 ){
 
                     // Populares anchetas
-                    (element as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             true,
                             nom,
                             "ancheta",
                             "El producto " + nom + desp ))
 
-                    (elementAnchetas as ArrayList<ListElement>).add(0,
+                    (elementAnchetas as ArrayList<ListElement>).add(anche,
                         ListElement(500*i,
                             true,
                             nom,
                             "ancheta",
                             "El producto " + nom + desp ))
 
-                    (elementPopulares as ArrayList<ListElement>).add(0,
+                    (elementPopulares as ArrayList<ListElement>).add(populare,
                         ListElement(500*i,
                             true,
                             nom,
                             "ancheta",
                             "El producto " + nom + desp ))
+
+                    anche += 1
+                    populare += 1
 
                 }
                 else{
-                    (element as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             false,
                             nom,
                             "ancheta",
                             "El producto " + nom + desp ))
 
-                    (elementAnchetas as ArrayList<ListElement>).add(0,
+                    (elementAnchetas as ArrayList<ListElement>).add(anche,
                         ListElement(500*i,
                             false,
                             nom,
                             "ancheta",
                             "El producto " + nom + desp ))
+
+                    anche += 1
 
                 }
 
@@ -158,42 +150,47 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
                 if( i % 4 == 0 ){
                     // Populares vinos
-                    (element as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             true,
                             nom,
                             "vino",
                             "El producto " + nom + desp ))
 
-                    (elementVinos as ArrayList<ListElement>).add(0,
+                    (elementVinos as ArrayList<ListElement>).add(vino,
                         ListElement(500*i,
                             true,
                             nom,
                             "vino",
                             "El producto " + nom + desp ))
 
-                    (elementPopulares as ArrayList<ListElement>).add(0,
+                    (elementPopulares as ArrayList<ListElement>).add(populare,
                         ListElement(500*i,
                             true,
                             nom,
                             "vino",
                             "El producto " + nom + desp ))
+
+                    vino += 1
+                    populare += 1
 
                 }
                 else{
-                    (element as ArrayList<ListElement>).add(0,
+                    (element as ArrayList<ListElement>).add(i,
                         ListElement(500*i,
                             false,
                             nom,
                             "vino",
                             "El producto " + nom + desp ))
 
-                    (elementVinos as ArrayList<ListElement>).add(0,
+                    (elementVinos as ArrayList<ListElement>).add(vino,
                         ListElement(500*i,
                             true,
                             nom,
                             "vino",
                             "El producto " + nom + desp ))
+
+                    vino += 1
 
                 }
 
@@ -264,7 +261,6 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         bundle.putString("despc", itemElemen.descripcion)
 
         bundle.putString("volverA", "Home")
-        bundle.putString("typeDatePV", "null")
 
         parentFragmentManager.setFragmentResult("key", bundle)
 

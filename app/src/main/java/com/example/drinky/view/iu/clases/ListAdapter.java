@@ -24,13 +24,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
     private LayoutInflater inflater;
     private Context context;
 
-    final ListAdapter.OnItemClickListener listener;
+    final ListAdapter.OnItemClickListenerProduct listener;
 
-    public interface OnItemClickListener {
-        void onItemClick(ListElement itemElemen);
+    public interface OnItemClickListenerProduct {
+        void onItemClickProduct(ListElement itemElemen);
     }
 
-    public ListAdapter(List<ListElement> mDato, Context context, ListAdapter.OnItemClickListener listener) {
+    public ListAdapter(List<ListElement> mDato, Context context, ListAdapter.OnItemClickListenerProduct listener) {
         this.inflater = LayoutInflater.from(context);
         this.context = context;
         this.datos = mDato;
@@ -76,7 +76,7 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick(item);
+                    listener.onItemClickProduct(item);
                 }
             });
 

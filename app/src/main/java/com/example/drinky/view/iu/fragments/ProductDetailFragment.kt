@@ -26,13 +26,11 @@ class ProductDetailFragment : Fragment() {
     private lateinit var btnAddCar : Button
     private lateinit var btnBackhome: ImageButton
 
-    private lateinit var typeDate : String
     private lateinit var retornarA : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        typeDate = ""
         retornarA = ""
 
         parentFragmentManager.setFragmentResultListener(
@@ -40,7 +38,6 @@ class ProductDetailFragment : Fragment() {
             this,
             FragmentResultListener { requestKey: String, bundle: Bundle ->
 
-                typeDate  = bundle.getString("typeDate").toString()
                 retornarA  = bundle.getString("volverA").toString()
 
                 nombreProduct.text = bundle.getString("nombre")
@@ -77,9 +74,6 @@ class ProductDetailFragment : Fragment() {
                 view.findNavController().navigate(R.id.action_productDetailFragment_to_productFragment)
             }
             else if( retornarA == "ProductView" ){
-                var bundle = Bundle()
-                bundle.putString("typeDate", typeDate)
-                parentFragmentManager.setFragmentResult("key", bundle)
                 view.findNavController().navigate(R.id.action_productDetailFragment_to_viewProductFragment)
             }
 
