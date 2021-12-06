@@ -138,14 +138,14 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  
 
     }
 
-    override fun onItemClick(itemElemen: ListElement) {
+    override fun onItemClickProduct(itemElemen: ListElement) {
         println("Has dado click en " + itemElemen.nombre)
 
         var bundle = Bundle()
 
         bundle.putString("nombre", itemElemen.nombre)
         bundle.putString("precio", itemElemen.precio.toString())
-        bundle.putString("image", itemElemen.imagen)
+        bundle.putString("despc", itemElemen.descripcion)
 
         parentFragmentManager.setFragmentResult("key", bundle)
 

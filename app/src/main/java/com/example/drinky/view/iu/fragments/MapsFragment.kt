@@ -1,4 +1,4 @@
-package com.example.drinky.view.iu.activities
+package com.example.drinky.view.iu.fragments
 
 import androidx.fragment.app.Fragment
 

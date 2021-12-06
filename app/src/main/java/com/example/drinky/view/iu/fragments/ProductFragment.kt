@@ -14,6 +14,8 @@ import com.example.drinky.view.iu.clases.ListAdapter
 import com.example.drinky.view.iu.clases.ListAdapterHome
 import com.example.drinky.view.iu.clases.ListElement
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
@@ -28,7 +30,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
     private lateinit var verMasPopular: Button
     private lateinit var verMasTodos: Button
 
-    private val db = FirebaseFirestore.getInstance()
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -84,16 +86,90 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
     private fun llenarDatos( ){
 
-        var desp : String = " awdazvzd wafwf wf afrew dkdnDN N I QIANDO DANFIA NFANINAOW FKWANFU V HEBG Uk cajfbu i ndafjiwebguvjnvuin vvjvuinv wbnf  vww bgiefjafnwiefn fwfn weiofnewn cwjenfwiuenf ej jewnf ij fwqk fweijnanbfwfw foiweanf efwioefn iuwnqakofnweiefvkmvs fnoiwfskl, kn foiwnm "
-
-        var vino = 0
+        var i = 0
         var anche = 0
-        var populare = 0
+        var vino = 0
+        var popular = 0
 
-        // Create a new user with a first and last name
+        //var desp : String = " awdazvzd wafwf wf afrew dkdnDN N I QIANDO DANFIA NFANINAOW FKWANFU V HEBG Uk cajfbu i ndafjiwebguvjnvuin vvjvuinv wbnf  vww bgiefjafnwiefn fwfn weiofnewn cwjenfwiuenf ej jewnf ij fwqk fweijnanbfwfw foiweanf efwioefn iuwnqakofnweiefvkmvs fnoiwfskl, kn foiwnm "
 
 
+        db.collection("Productos")
+            .get()
+            .addOnSuccessListener { result ->
+
+                for(document in result){
+
+
+                    (element as ArrayList<ListElement>).add(i,
+                        ListElement(
+                            document.data.getValue("precio").toString().toInt(),
+                            document.data.getValue("popular").toString().toBoolean(),
+                            document.data.getValue("nombre").toString(),
+                            document.data.getValue("categoria").toString(),
+                            document.data.getValue("descripcion").toString() )
+                        )
+                    i += 1
+
+
+                    if( document.data.getValue("categoria").toString() == "vino" ){
+
+                        (elementVinos as ArrayList<ListElement>).add(vino,
+                            ListElement(
+                                document.data.getValue("precio").toString().toInt(),
+                                document.data.getValue("popular").toString().toBoolean(),
+                                document.data.getValue("nombre").toString(),
+                                document.data.getValue("categoria").toString(),
+                                document.data.getValue("descripcion").toString()
+                            ))
+                        vino += 1
+
+                        if( document.data.getValue("popular").toString().toBoolean() ){
+                            (elementPopulares as ArrayList<ListElement>).add(popular,
+                                ListElement(
+                                    document.data.getValue("precio").toString().toInt(),
+                                    document.data.getValue("popular").toString().toBoolean(),
+                                    document.data.getValue("nombre").toString(),
+                                    document.data.getValue("categoria").toString(),
+                                    document.data.getValue("descripcion").toString()
+                                ))
+                            popular += 1
+                        }
+
+                    }
+                    else if( document.data.getValue("categoria").toString() == "ancheta" ){
+                        (elementAnchetas as ArrayList<ListElement>).add(anche,
+                            ListElement(
+                                document.data.getValue("precio").toString().toInt(),
+                                document.data.getValue("popular").toString().toBoolean(),
+                                document.data.getValue("nombre").toString(),
+                                document.data.getValue("categoria").toString(),
+                                document.data.getValue("descripcion").toString()
+                            ))
+                        anche += 1
+
+                        if( document.data.getValue("popular").toString().toBoolean() ){
+                            (elementPopulares as ArrayList<ListElement>).add(popular,
+                                ListElement(
+                                    document.data.getValue("precio").toString().toInt(),
+                                    document.data.getValue("popular").toString().toBoolean(),
+                                    document.data.getValue("nombre").toString(),
+                                    document.data.getValue("categoria").toString(),
+                                    document.data.getValue("descripcion").toString()
+                                ))
+                            popular += 1
+                        }
+                    }
+
+                }
+            }
+            .addOnFailureListener { e ->
+                println("Error al subir los datos")
+            }
+
+        /*
         for (i in 0..20){
+
 
             if( i % 3 == 0 ){
 
@@ -116,7 +192,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                             "ancheta",
                             "El producto " + nom + desp ))
 
-                    (elementPopulares as ArrayList<ListElement>).add(populare,
+                    (elementPopulares as ArrayList<ListElement>).add(popular,
                         ListElement(500*i,
                             true,
                             nom,
@@ -124,9 +200,9 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                             "El producto " + nom + desp ))
 
                     anche += 1
-                    populare += 1
+                    popular += 1
 
-                    val productos = hashMapOf(
+                    /*val productos = hashMapOf(
                         "categoria" to "ancheta",
                         "descripcion" to "El producto " + nom + desp,
                         "nombre" to nom,
@@ -142,7 +218,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                         .addOnFailureListener { e ->
 
                             println("Error al subir los datos")
-                        }
+                        }*/
 
                 }
                 else{
@@ -162,7 +238,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
                     anche += 1
 
-                    val productos = hashMapOf(
+                    /*val productos = hashMapOf(
                         "categoria" to "ancheta",
                         "descripcion" to "El producto " + nom + desp,
                         "nombre" to nom,
@@ -178,7 +254,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                         .addOnFailureListener { e ->
 
                             println("Error al subir los datos")
-                        }
+                        }*/
 
                 }
 
@@ -203,7 +279,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                             "vino",
                             "El producto " + nom + desp ))
 
-                    (elementPopulares as ArrayList<ListElement>).add(populare,
+                    (elementPopulares as ArrayList<ListElement>).add(popular,
                         ListElement(500*i,
                             true,
                             nom,
@@ -211,9 +287,9 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                             "El producto " + nom + desp ))
 
                     vino += 1
-                    populare += 1
+                    popular += 1
 
-                    val productos = hashMapOf(
+                    /*val productos = hashMapOf(
                         "categoria" to "vino",
                         "descripcion" to "El producto " + nom + desp,
                         "nombre" to nom,
@@ -229,7 +305,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                         .addOnFailureListener { e ->
 
                             println("Error al subir los datos")
-                        }
+                        }*/
 
                 }
                 else{
@@ -249,7 +325,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
                     vino += 1
 
-                    val productos = hashMapOf(
+                    /*val productos = hashMapOf(
                         "categoria" to "vino",
                         "descripcion" to "El producto " + nom + desp,
                         "nombre" to nom,
@@ -265,14 +341,14 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                         .addOnFailureListener { e ->
 
                             println("Error al subir los datos")
-                        }
+                        }*/
 
                 }
 
             }
 
         }
-
+        */
     }
 
     private fun init(view:View) {
