@@ -84,15 +84,12 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
     }
 
-    private fun llenarDatos( ){
+    private fun init(view:View) {
 
         var i = 0
         var anche = 0
         var vino = 0
         var popular = 0
-
-        //var desp : String = " awdazvzd wafwf wf afrew dkdnDN N I QIANDO DANFIA NFANINAOW FKWANFU V HEBG Uk cajfbu i ndafjiwebguvjnvuin vvjvuinv wbnf  vww bgiefjafnwiefn fwfn weiofnewn cwjenfwiuenf ej jewnf ij fwqk fweijnanbfwfw foiweanf efwioefn iuwnqakofnweiefvkmvs fnoiwfskl, kn foiwnm "
-
 
         db.collection("Productos")
             .get()
@@ -108,9 +105,8 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                             document.data.getValue("nombre").toString(),
                             document.data.getValue("categoria").toString(),
                             document.data.getValue("descripcion").toString() )
-                        )
+                    )
                     i += 1
-
 
                     if( document.data.getValue("categoria").toString() == "vino" ){
 
@@ -134,6 +130,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                                     document.data.getValue("descripcion").toString()
                                 ))
                             popular += 1
+
                         }
 
                     }
@@ -158,228 +155,43 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                                     document.data.getValue("descripcion").toString()
                                 ))
                             popular += 1
+
+
                         }
                     }
 
                 }
+
+                val listAdapterHome = ListAdapterHome(element, requireContext(), this)
+                val listAdapterHomeAnchetas = ListAdapterHome(elementAnchetas, requireContext(), this)
+                val listAdapterHomeVinos = ListAdapterHome(elementVinos, requireContext(), this)
+                val listAdapterHomePopulares = ListAdapterHome(elementPopulares, requireContext(), this)
+
+                var recycleViewPopular : RecyclerView = view.findViewById(R.id.recycleViewProductoPopulare)
+                recycleViewPopular.setHasFixedSize(true)
+                recycleViewPopular.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                recycleViewPopular.adapter = listAdapterHomePopulares
+
+
+                var recycleViewVino : RecyclerView = view.findViewById(R.id.recycleViewProductoVinos)
+                recycleViewVino.setHasFixedSize(true)
+                recycleViewVino.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                recycleViewVino.adapter = listAdapterHomeVinos
+
+                var recycleViewAncheta : RecyclerView = view.findViewById(R.id.recycleViewProductoAnchetas)
+                recycleViewAncheta.setHasFixedSize(true)
+                recycleViewAncheta.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                recycleViewAncheta.adapter = listAdapterHomeAnchetas
+
+                var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewProductoTodos)
+                recycleViewTodos.setHasFixedSize(true)
+                recycleViewTodos.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
+                recycleViewTodos.adapter = listAdapterHome
+
             }
             .addOnFailureListener { e ->
                 println("Error al subir los datos")
             }
-
-        /*
-        for (i in 0..20){
-
-
-            if( i % 3 == 0 ){
-
-                var nom = "anchetas " + i
-
-                if( i % 4 == 0 ){
-
-                    // Populares anchetas
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    (elementAnchetas as ArrayList<ListElement>).add(anche,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    (elementPopulares as ArrayList<ListElement>).add(popular,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    anche += 1
-                    popular += 1
-
-                    /*val productos = hashMapOf(
-                        "categoria" to "ancheta",
-                        "descripcion" to "El producto " + nom + desp,
-                        "nombre" to nom,
-                        "popular" to true,
-                        "precio" to 500*i
-                    )
-
-                    db.collection("Productos")
-                        .add(productos)
-                        .addOnSuccessListener { documentReference ->
-                            println("Datos subidos con exito")
-                        }
-                        .addOnFailureListener { e ->
-
-                            println("Error al subir los datos")
-                        }*/
-
-                }
-                else{
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            false,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    (elementAnchetas as ArrayList<ListElement>).add(anche,
-                        ListElement(500*i,
-                            false,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                    anche += 1
-
-                    /*val productos = hashMapOf(
-                        "categoria" to "ancheta",
-                        "descripcion" to "El producto " + nom + desp,
-                        "nombre" to nom,
-                        "popular" to false,
-                        "precio" to 500*i
-                    )
-
-                    db.collection("Productos")
-                        .add(productos)
-                        .addOnSuccessListener { documentReference ->
-                            println("Datos subidos con exito")
-                        }
-                        .addOnFailureListener { e ->
-
-                            println("Error al subir los datos")
-                        }*/
-
-                }
-
-            }
-            else{
-
-                var nom = "vinos " + i
-
-                if( i % 4 == 0 ){
-                    // Populares vinos
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    (elementVinos as ArrayList<ListElement>).add(vino,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    (elementPopulares as ArrayList<ListElement>).add(popular,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    vino += 1
-                    popular += 1
-
-                    /*val productos = hashMapOf(
-                        "categoria" to "vino",
-                        "descripcion" to "El producto " + nom + desp,
-                        "nombre" to nom,
-                        "popular" to true,
-                        "precio" to 500*i
-                    )
-
-                    db.collection("Productos")
-                        .add(productos)
-                        .addOnSuccessListener { documentReference ->
-                            println("Datos subidos con exito")
-                        }
-                        .addOnFailureListener { e ->
-
-                            println("Error al subir los datos")
-                        }*/
-
-                }
-                else{
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            false,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    (elementVinos as ArrayList<ListElement>).add(vino,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                    vino += 1
-
-                    /*val productos = hashMapOf(
-                        "categoria" to "vino",
-                        "descripcion" to "El producto " + nom + desp,
-                        "nombre" to nom,
-                        "popular" to false,
-                        "precio" to 500*i
-                    )
-
-                    db.collection("Productos")
-                        .add(productos)
-                        .addOnSuccessListener { documentReference ->
-                            println("Datos subidos con exito")
-                        }
-                        .addOnFailureListener { e ->
-
-                            println("Error al subir los datos")
-                        }*/
-
-                }
-
-            }
-
-        }
-        */
-    }
-
-    private fun init(view:View) {
-
-        llenarDatos()
-
-        val listAdapterHome = ListAdapterHome(element, requireContext(), this)
-        val listAdapterHomeAnchetas = ListAdapterHome(elementAnchetas, requireContext(), this)
-        val listAdapterHomeVinos = ListAdapterHome(elementVinos, requireContext(), this)
-        val listAdapterHomePopulares = ListAdapterHome(elementPopulares, requireContext(), this)
-
-        var recycleViewPopular : RecyclerView = view.findViewById(R.id.recycleViewProductoPopulare)
-        recycleViewPopular.setHasFixedSize(true)
-        recycleViewPopular.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycleViewPopular.adapter = listAdapterHomePopulares
-
-
-        var recycleViewVino : RecyclerView = view.findViewById(R.id.recycleViewProductoVinos)
-        recycleViewVino.setHasFixedSize(true)
-        recycleViewVino.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycleViewVino.adapter = listAdapterHomeVinos
-
-        var recycleViewAncheta : RecyclerView = view.findViewById(R.id.recycleViewProductoAnchetas)
-        recycleViewAncheta.setHasFixedSize(true)
-        recycleViewAncheta.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycleViewAncheta.adapter = listAdapterHomeAnchetas
-
-        var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewProductoTodos)
-        recycleViewTodos.setHasFixedSize(true)
-        recycleViewTodos.layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-        recycleViewTodos.adapter = listAdapterHome
 
     }
 
