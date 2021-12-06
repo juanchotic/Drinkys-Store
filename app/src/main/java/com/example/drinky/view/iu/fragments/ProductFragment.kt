@@ -13,6 +13,7 @@ import com.example.drinky.R
 import com.example.drinky.view.iu.clases.ListAdapter
 import com.example.drinky.view.iu.clases.ListAdapterHome
 import com.example.drinky.view.iu.clases.ListElement
+import com.google.firebase.firestore.FirebaseFirestore
 
 
 class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
@@ -27,6 +28,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
     private lateinit var verMasPopular: Button
     private lateinit var verMasTodos: Button
 
+    private val db = FirebaseFirestore.getInstance()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,10 +40,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
+    override fun onCreateView( inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle? ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_product, container, false)
     }
@@ -90,7 +89,11 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         var vino = 0
         var anche = 0
         var populare = 0
-        for (i in 0..50){
+
+        // Create a new user with a first and last name
+
+
+        for (i in 0..20){
 
             if( i % 3 == 0 ){
 
@@ -123,6 +126,24 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                     anche += 1
                     populare += 1
 
+                    val productos = hashMapOf(
+                        "categoria" to "ancheta",
+                        "descripcion" to "El producto " + nom + desp,
+                        "nombre" to nom,
+                        "popular" to true,
+                        "precio" to 500*i
+                    )
+
+                    db.collection("Productos")
+                        .add(productos)
+                        .addOnSuccessListener { documentReference ->
+                            println("Datos subidos con exito")
+                        }
+                        .addOnFailureListener { e ->
+
+                            println("Error al subir los datos")
+                        }
+
                 }
                 else{
                     (element as ArrayList<ListElement>).add(i,
@@ -140,6 +161,24 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                             "El producto " + nom + desp ))
 
                     anche += 1
+
+                    val productos = hashMapOf(
+                        "categoria" to "ancheta",
+                        "descripcion" to "El producto " + nom + desp,
+                        "nombre" to nom,
+                        "popular" to false,
+                        "precio" to 500*i
+                    )
+
+                    db.collection("Productos")
+                        .add(productos)
+                        .addOnSuccessListener { documentReference ->
+                            println("Datos subidos con exito")
+                        }
+                        .addOnFailureListener { e ->
+
+                            println("Error al subir los datos")
+                        }
 
                 }
 
@@ -174,6 +213,24 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                     vino += 1
                     populare += 1
 
+                    val productos = hashMapOf(
+                        "categoria" to "vino",
+                        "descripcion" to "El producto " + nom + desp,
+                        "nombre" to nom,
+                        "popular" to true,
+                        "precio" to 500*i
+                    )
+
+                    db.collection("Productos")
+                        .add(productos)
+                        .addOnSuccessListener { documentReference ->
+                            println("Datos subidos con exito")
+                        }
+                        .addOnFailureListener { e ->
+
+                            println("Error al subir los datos")
+                        }
+
                 }
                 else{
                     (element as ArrayList<ListElement>).add(i,
@@ -192,30 +249,29 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
                     vino += 1
 
+                    val productos = hashMapOf(
+                        "categoria" to "vino",
+                        "descripcion" to "El producto " + nom + desp,
+                        "nombre" to nom,
+                        "popular" to false,
+                        "precio" to 500*i
+                    )
+
+                    db.collection("Productos")
+                        .add(productos)
+                        .addOnSuccessListener { documentReference ->
+                            println("Datos subidos con exito")
+                        }
+                        .addOnFailureListener { e ->
+
+                            println("Error al subir los datos")
+                        }
+
                 }
 
             }
 
         }
-
-        /*
-        (element as ArrayList<ListElement>).add(0, ListElement( "Producto 1", 500))
-        (element as ArrayList<ListElement>).add(1, ListElement( "Producto 2", 600))
-        (element as ArrayList<ListElement>).add(2, ListElement( "Producto 3", 700))
-        (element as ArrayList<ListElement>).add(3, ListElement( "Producto 4", 800))
-        (element as ArrayList<ListElement>).add(4, ListElement( "Producto 5", 1000))
-        (element as ArrayList<ListElement>).add(5, ListElement( "Producto 6", 5800))
-        (element as ArrayList<ListElement>).add(6, ListElement( "Producto 7", 5800))
-        (element as ArrayList<ListElement>).add(7, ListElement( "Producto 8", 5800))
-        (element as ArrayList<ListElement>).add(8, ListElement( "Producto 9", 5800))
-        (element as ArrayList<ListElement>).add(9, ListElement( "Producto 10", 5800))
-        (element as ArrayList<ListElement>).add(10, ListElement( "Producto 11", 5800))
-        (element as ArrayList<ListElement>).add(11, ListElement( "Producto 12", 5800))
-        (element as ArrayList<ListElement>).add(12, ListElement( "Producto 13", 5800))
-        (element as ArrayList<ListElement>).add(13, ListElement( "Producto 14", 5800))
-        (element as ArrayList<ListElement>).add(14, ListElement( "Producto 15", 5800))
-        (element as ArrayList<ListElement>).add(15, ListElement( "Producto 16", 5800))
-        (element as ArrayList<ListElement>).add(16, ListElement( "Producto 17", 5800))*/
 
     }
 

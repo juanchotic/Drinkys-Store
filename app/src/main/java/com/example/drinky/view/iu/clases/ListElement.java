@@ -7,9 +7,9 @@ import java.io.Serializable;
 
 public class ListElement implements Serializable {
 
-    private int idProducto, precio;
+    private int precio;
     private boolean popular;
-    private String imagen, nombre, categoria, descripcion;
+    private String idProducto, imagen, nombre, categoria, descripcion;
 
     public ListElement( String nombre, int precio) {
         this.nombre = nombre;
@@ -17,7 +17,7 @@ public class ListElement implements Serializable {
         this.popular = false;
         this.descripcion = "";
         this.categoria = "";
-        this.idProducto = 0;
+        this.idProducto = "";
     }
 
     public ListElement(int precio, String nombre, String categoria, String descripcion) {
@@ -29,7 +29,7 @@ public class ListElement implements Serializable {
     }
 
     public ListElement(int precio, boolean popular, String nombre, String categoria, String descripcion) {
-        this.idProducto = 0;
+        this.idProducto = "";
         this.precio = precio;
         this.popular = popular;
         this.nombre = nombre;
@@ -37,7 +37,7 @@ public class ListElement implements Serializable {
         this.descripcion = descripcion;
     }
 
-    public ListElement(int idProducto, int precio, boolean popular, String imagen, String nombre, String categoria, String descripcion) {
+    public ListElement(String idProducto, int precio, boolean popular, String imagen, String nombre, String categoria, String descripcion) {
         this.idProducto = idProducto;
         this.precio = precio;
         this.popular = popular;
@@ -71,11 +71,11 @@ public class ListElement implements Serializable {
         this.precio = precio;
     }
 
-    public int getIdProducto() {
+    public String getIdProducto() {
         return idProducto;
     }
 
-    public void setIdProducto(int idProducto) {
+    public void setIdProducto(String idProducto) {
         this.idProducto = idProducto;
     }
 

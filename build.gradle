@@ -7,7 +7,9 @@ buildscript {
     dependencies {
         classpath "com.android.tools.build:gradle:7.0.3"
         classpath 'org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.0'
-        classpath 'com.google.gms:google-services:4.3.10'
+
+        // Add the following line:
+        classpath 'com.google.gms:google-services:4.3.10'  // Google Services plugin
 
         //Añadimos el classpath de Navigation
         classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.3.3'
