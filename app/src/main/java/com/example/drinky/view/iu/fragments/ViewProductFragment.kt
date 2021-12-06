@@ -17,22 +17,22 @@ import com.example.drinky.R
 import com.example.drinky.view.iu.clases.ListAdapter
 import com.example.drinky.view.iu.clases.ListAdapterHome
 import com.example.drinky.view.iu.clases.ListElement
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
 
 class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  {
 
     private lateinit var element : List<ListElement>
-    private lateinit var elementFiltros : List<ListElement>
 
     private lateinit var btnBackIni : ImageButton
 
-    private lateinit var typeDatos : String
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         element = ArrayList<ListElement>()
-        elementFiltros = ArrayList<ListElement>()
 
     }
 
@@ -47,67 +47,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  
                 view : View ->
 
             view.findNavController().navigate(R.id.action_viewProductFragment_to_productFragment)
-        }
 
-    }
-
-    private fun llenarDatos( ){
-
-        var desp : String = " awdazvzd wafwf wf afrew dkdnDN N I QIANDO DANFIA NFANINAOW FKWANFU V HEBG Uk cajfbu i ndafjiwebguvjnvuin vvjvuinv wbnf  vww bgiefjafnwiefn fwfn weiofnewn cwjenfwiuenf ej jewnf ij fwqk fweijnanbfwfw foiweanf efwioefn iuwnqakofnweiefvkmvs fnoiwfskl, kn foiwnm "
-
-        for (i in 0..50){
-
-            if( i % 3 == 0 ){
-
-                var nom = "anchetas " + i
-
-                if( i % 4 == 0 ){
-
-                    // Populares anchetas
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                }
-                else{
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            false,
-                            nom,
-                            "ancheta",
-                            "El producto " + nom + desp ))
-
-                }
-
-            }
-            else{
-
-                var nom = "vinos " + i
-
-                if( i % 4 == 0 ){
-                    // Populares vinos
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            true,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                }
-                else{
-                    (element as ArrayList<ListElement>).add(i,
-                        ListElement(500*i,
-                            false,
-                            nom,
-                            "vino",
-                            "El producto " + nom + desp ))
-
-                }
-
-            }
 
         }
 
@@ -115,15 +55,38 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  
 
     private fun init(view:View) {
 
-        llenarDatos()
+        var i = 0
 
-        val listAdapter : ListAdapter = ListAdapter(element, requireContext(), this)
+        db.collection("Productos")
+            .get()
+            .addOnSuccessListener { result ->
 
-        var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewProducto)
-        recycleViewTodos.setHasFixedSize(true)
-        recycleViewTodos.layoutManager = GridLayoutManager(requireContext(), 2)
-        recycleViewTodos.adapter = listAdapter
+                for(document in result){
 
+                    (element as ArrayList<ListElement>).add(i,
+                        ListElement(
+                            document.data.getValue("precio").toString().toInt(),
+                            document.data.getValue("popular").toString().toBoolean(),
+                            document.data.getValue("nombre").toString(),
+                            document.data.getValue("categoria").toString(),
+                            document.data.getValue("descripcion").toString()
+                        )
+                    )
+                    i += 1
+
+                }
+
+                val listAdapter = ListAdapter(element, requireContext(), this)
+
+                var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewProducto)
+                recycleViewTodos.setHasFixedSize(true)
+                recycleViewTodos.layoutManager = GridLayoutManager(requireContext(), 2)
+                recycleViewTodos.adapter = listAdapter
+
+            }
+            .addOnFailureListener { e ->
+                println("Error al subir los datos")
+            }
     }
 
     override fun onCreateView(
@@ -146,6 +109,9 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  
         bundle.putString("nombre", itemElemen.nombre)
         bundle.putString("precio", itemElemen.precio.toString())
         bundle.putString("despc", itemElemen.descripcion)
+
+        bundle.putString("volverA", "ProductView")
+        bundle.putString("categoria", itemElemen.categoria)
 
         parentFragmentManager.setFragmentResult("key", bundle)
 

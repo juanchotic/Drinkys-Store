@@ -44,6 +44,12 @@ class ProductDetailFragment : Fragment() {
                 precioProduct.text = bundle.getString("precio")
                 descProduct.text = bundle.getString("despc")
 
+                if(bundle.getString("categoria").toString() == "vino"){
+                    imageProduct.setImageResource(R.mipmap.vino_dis_1);
+                }
+                else if(bundle.getString("categoria").toString() == "ancheta"){
+                    imageProduct.setImageResource(R.mipmap.ancheta_dis_1);
+                }
 
             })
 

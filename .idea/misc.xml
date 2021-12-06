@@ -3,18 +3,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/activity_home.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/activity_splash_screen.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_carrito.xml" value="0.25" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_config.xml" value="0.25" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_configuración.xml" value="0.1" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_login_telefono.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_product.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_product_detail.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_registro.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_test_v_home.xml" value="0.13269927536231885" />
         <entry key="..\:/Drinkys/app/src/main/res/layout/activity_home.xml" value="0.15" />
         <entry key="..\:/Drinkys/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Drinkys/app/src/main/res/layout/activity_splash_screen.xml" value="0.16893115942028986" />
@@ -91,6 +79,7 @@
         <entry key="..\:/Users/jhoan david/Documents/Drinkys/app/src/main/res/layout/list_element_home.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/jhoan david/Documents/Drinkys/app/src/main/res/menu/bottom_nav_menu.xml" value="0.22447916666666667" />
         <entry key="..\:/Users/jhoan david/Documents/Drinkys/app/src/main/res/menu/menu_nav_bar.xml" value="0.22447916666666667" />
+        <entry key="..\:/Users/jhoan david/Documents/Drinkys/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.14739583333333334" />
       </map>
     </option>
   </component>

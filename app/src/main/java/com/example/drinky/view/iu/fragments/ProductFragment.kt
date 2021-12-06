@@ -206,6 +206,8 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
         bundle.putString("volverA", "Home")
 
+        bundle.putString("categoria", itemElemen.categoria)
+
         parentFragmentManager.setFragmentResult("key", bundle)
 
         view?.findNavController()?.navigate(R.id.action_productFragment_to_productDetailFragment)

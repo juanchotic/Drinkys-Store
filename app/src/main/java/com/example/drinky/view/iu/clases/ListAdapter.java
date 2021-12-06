@@ -73,6 +73,13 @@ public class ListAdapter extends RecyclerView.Adapter<ListAdapter.ViewHolder> {
             nombre.setText(item.getNombre());
             precio.setText(item.getPrecio()+"");
 
+            if(item.getCategoria().equals("vino")){
+                iconImage.setImageResource(R.mipmap.vino_dis_1);
+            }
+            else if(item.getCategoria().equals("ancheta")){
+                iconImage.setImageResource(R.mipmap.ancheta_dis_1);
+            }
+
             itemView.setOnClickListener(new View.OnClickListener(){
                 @Override
                 public void onClick(View view) {
