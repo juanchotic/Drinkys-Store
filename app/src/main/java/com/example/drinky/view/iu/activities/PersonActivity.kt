@@ -1,6 +1,7 @@
 package com.example.drinky.view.iu.activities
 
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -17,6 +18,7 @@ class PersonActivity : AppCompatActivity() {
 
     private lateinit var irhome : ImageButton
     private lateinit var botonSecion : Button
+    private lateinit var instagram : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,7 +28,7 @@ class PersonActivity : AppCompatActivity() {
 
         irhome = findViewById(R.id.irAlHome)
         botonSecion  = findViewById(R.id.btnSecion)
-
+        instagram = findViewById(R.id.button_insta)
         val currentUser = auth.currentUser
         if(currentUser != null){
             botonSecion.text = "Cerrar Secion"
@@ -48,6 +50,16 @@ class PersonActivity : AppCompatActivity() {
             finish();
         }
 
+       instagram.setOnClickListener{
+          val open = Intent(android.content.Intent.ACTION_VIEW)
+           open.data = Uri.parse("https://www.instagram.com/?hl=es-la")
+           startActivity(open)
+
+       }
+
+
 
     }
+
+
 }
