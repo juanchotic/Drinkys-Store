@@ -2,4 +2,9 @@
     <string name="app_name">Drinkys</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="about"> Su Tienda Virtual de Licores y Anchetas personalizadas Drinkys Store,
+        se encuentra ubicada en el Poblado, en la hermosa Ciudad de Medellin Colombia,
+        usted puede visualizar toda la oferta de productos de altísima calidad para
+        degustar, compartir y brindar con los mas queridos </string> <string/>
+
 </resources>

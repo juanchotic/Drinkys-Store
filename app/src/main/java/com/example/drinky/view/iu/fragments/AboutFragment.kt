@@ -6,6 +6,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.example.drinky.R
+import com.google.android.gms.maps.CameraUpdateFactory
+import com.google.android.gms.maps.GoogleMap
+import com.google.android.gms.maps.OnMapReadyCallback
+import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.LatLng
+import com.google.android.gms.maps.model.MarkerOptions
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -17,7 +23,7 @@ private const val ARG_PARAM2 = "param2"
  * Use the [AboutFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class AboutFragment : Fragment() {
+class AboutFragment : Fragment(), OnMapReadyCallback {
     // TODO: Rename and change types of parameters
     private var param1: String? = null
     private var param2: String? = null
@@ -38,6 +44,12 @@ class AboutFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_about, container, false)
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        val mapFragment =   childFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
+        mapFragment.getMapAsync(this)
+    }
+
     companion object {
         /**
          * Use this factory method to create a new instance of
@@ -56,5 +68,25 @@ class AboutFragment : Fragment() {
                     putString(ARG_PARAM2, param2)
                 }
             }
+    }
+
+    override fun onMapReady(p0: GoogleMap) {
+        val name    =   "Drinkys Store"
+        val address =   "El Poblado. Medellin-Antioquia"
+        val latitude=   6.227259
+        val longitude=  -75.5719699
+
+        val zoom = 15f
+        val centerMap = LatLng(latitude,longitude)
+        p0?.animateCamera(CameraUpdateFactory.newLatLngZoom(centerMap, zoom))
+
+
+        var marker = p0.addMarker(
+            MarkerOptions()
+                .title(name)
+                .position(centerMap)
+        )
+
+
     }
 }
