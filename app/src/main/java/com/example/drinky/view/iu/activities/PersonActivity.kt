@@ -50,13 +50,12 @@ class PersonActivity : AppCompatActivity() {
             finish();
         }
 
-       instagram.setOnClickListener{
-          val open = Intent(android.content.Intent.ACTION_VIEW)
-           open.data = Uri.parse("https://www.instagram.com/?hl=es-la")
-           startActivity(open)
+         instagram.setOnClickListener{
+            val open = Intent(android.content.Intent.ACTION_VIEW)
+            open.data = Uri.parse("https://www.instagram.com/?hl=es-la")
+             startActivity(open)
 
-       }
-
+         }
 
 
     }
