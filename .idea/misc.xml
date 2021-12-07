@@ -3,30 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/drawable/ic_comment.xml" value="0.28974358974358977" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/activity_home.xml" value="0.2" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/activity_person.xml" value="0.2553191489361702" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/activity_splash_screen.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/comment_element.xml" value="0.135258358662614" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_carrito.xml" value="0.25" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_carrito_compra.xml" value="0.17" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_comentarios.xml" value="0.25" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_config.xml" value="0.16" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_configuración.xml" value="0.1" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_crear_comentario.xml" value="0.135258358662614" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_login.xml" value="0.25" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_login_telefono.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_maps.xml" value="0.135258358662614" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_product.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_product_detail.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_registro.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/fragment_test_v_home.xml" value="0.13269927536231885" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/list_element.xml" value="0.17" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/layout/list_element_home.xml" value="0.17" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/menu/bottom_nav_menu.xml" value="0.21203703703703702" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/menu/menu_nav_bar.xml" value="0.21203703703703702" />
-        <entry key="..\:/Documents/ciclo_4/drinky/Drinkys-Store/app/src/main/res/menu/toolbar_nav_menu.xml" value="0.21203703703703702" />
+        <entry key="..\:/Drinkys-Store/app/src/main/res/drawable/barD_background.xml" value="0.19427083333333334" />
+        <entry key="..\:/Drinkys-Store/app/src/main/res/drawable/borde_button_other.xml" value="0.19427083333333334" />
+        <entry key="..\:/Drinkys-Store/app/src/main/res/drawable/borde_edit_text.xml" value="0.19427083333333334" />
+        <entry key="..\:/Drinkys-Store/app/src/main/res/layout/activity_home.xml" value="0.13269927536231885" />
+        <entry key="..\:/Drinkys-Store/app/src/main/res/layout/fragment_about.xml" value="0.18" />
+        <entry key="..\:/Drinkys-Store/app/src/main/res/layout/fragment_maps.xml" value="0.1431159420289855" />
+        <entry key="..\:/Drinkys-Store/app/src/main/res/mipmap-anydpi-v26/barD.xml" value="0.1734375" />
         <entry key="..\:/Drinkys/app/src/main/res/layout/activity_home.xml" value="0.15" />
         <entry key="..\:/Drinkys/app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="..\:/Drinkys/app/src/main/res/layout/activity_splash_screen.xml" value="0.16893115942028986" />
