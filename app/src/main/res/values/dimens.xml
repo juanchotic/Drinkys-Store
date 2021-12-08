@@ -4,7 +4,7 @@
     <dimen name="cardElevation">25dp</dimen>
     <dimen name="cardLayoutMargin">5dp</dimen>
     <dimen name="logoHeight">10dp</dimen>
-    <dimen name="defaultLayoutMargin">10dp</dimen>
+    <dimen name="defaultLayoutMargin">5dp</dimen>
     <dimen name="logo">50dp</dimen>
     <dimen name="textSizeTitle">50sp</dimen>
     <dimen name="textSizeContent">25sp</dimen>
