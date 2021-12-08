@@ -40,8 +40,6 @@ class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDele
         super.onCreate(savedInstanceState)
 
         auth = Firebase.auth
-        element = ArrayList<ListElement>()
-        carrito = ArrayList<ListElement>()
 
     }
 
@@ -63,24 +61,72 @@ class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDele
 
         btnVaciar.setOnClickListener {
             vaciar()
+            Toast.makeText(requireContext().applicationContext, "A vaciado el carrito", Toast.LENGTH_LONG).show()
         }
 
         btnPagar.setOnClickListener {
             pagar()
+            Toast.makeText(requireContext().applicationContext, "Pago Exitoso", Toast.LENGTH_LONG).show()
         }
 
 
     }
 
     private fun pagar() {
+
+        db.collection("Carrito")
+            .get()
+            .addOnSuccessListener { result ->
+
+                for(documentC in result) {
+
+                    if(documentC.data.getValue("emailUser") == auth.currentUser?.email){
+                        db.collection("Carrito").document(documentC.id).delete()
+                        db.collection("Productos").document(documentC.data.getValue("idProducto").toString()).delete()
+                    }
+
+                }
+
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
+            }
+
+
+        view?.findNavController()?.navigate(R.id.action_carritoCompraFragment_to_productFragment)
+
     }
 
     private fun vaciar() {
+
+
+        db.collection("Carrito")
+            .get()
+            .addOnSuccessListener { result ->
+
+                for(documentC in result) {
+
+                    if(documentC.data.getValue("emailUser") == auth.currentUser?.email){
+                        db.collection("Carrito").document(documentC.id).delete()
+                    }
+
+                }
+
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
+            }
+
+        view?.findNavController()?.navigate(R.id.action_carritoCompraFragment_to_productFragment)
+
     }
 
     private fun init(view:View, email:String){
 
         var i = 0
+
+        element = ArrayList<ListElement>()
+        carrito = ArrayList<ListElement>()
 
         db.collection("Productos").addSnapshotListener { result, error ->
 
@@ -127,45 +173,31 @@ class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDele
 
                 }
 
-                val listAdapter = CarritoAdapter(carrito, requireContext(), this)
+                var sumaTotal = 0
 
-                var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewCarrito)
-                recycleViewTodos.setHasFixedSize(true)
-                recycleViewTodos.layoutManager = LinearLayoutManager(requireContext()) //GridLayoutManager(requireContext(), 2)
-                recycleViewTodos.adapter = listAdapter
-
-            }
-
-            /*addSnapshotListener{ resultC, errorC ->
-
-                if( errorC != null ){
-                    return@addSnapshotListener
-                }
-
-                var ic = 0
-
-                for(document in resultC!!){
-
-                    if( document.data.getValue("emailUser").toString() == email ){
-
-                        for( x in 0..element.size-1 ){
-
-                            if( document.data.getValue("idProducto").toString() == element[x].idProducto ){
-                                (carrito as ArrayList<ListElement>).add(ic,
-                                    element[x]
-                                )
-                                ic += 1
-                            }
-
-                        }
-
+                if(carrito.size != 0){
+                    for(i in carrito){
+                        sumaTotal += i.precio
                     }
 
+                    totalPagar.text = "Total a pagar: $"+sumaTotal
+
+                    val listAdapter = CarritoAdapter(carrito, requireContext(), this)
+
+                    var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewCarrito)
+                    recycleViewTodos.setHasFixedSize(true)
+                    recycleViewTodos.layoutManager = LinearLayoutManager(requireContext()) //GridLayoutManager(requireContext(), 2)
+                    recycleViewTodos.adapter = listAdapter
+
                 }
 
 
 
-            }*/
+            }.addOnFailureListener { e ->
+                Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
+            }
+
+
 
         }
 
@@ -193,12 +225,19 @@ class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDele
 
                     for(documentC in result) {
 
-                        if( documentC.data.getValue("idProducto").toString() == itemElemen.idProducto ){
-                            db.collection("Carrito").document(documentC.data.getValue("idProducto").toString()).delete()
+                        if(documentC.data.getValue("emailUser") == auth.currentUser?.email){
+                            if( documentC.data.getValue("idProducto") == itemElemen.idProducto ){
+                                db.collection("Carrito").document(documentC.id).delete()
+                                val view2 = view
+                                init(view2!!, auth.currentUser?.email!!)
+                            }
                         }
 
                     }
 
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
                 }
 
         }
