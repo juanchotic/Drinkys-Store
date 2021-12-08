@@ -130,16 +130,34 @@ class RegistroFragment : Fragment() {
                             "apellido" to apelldio.text.toString(),
                             "telefono" to telefono.text.toString()
                         )
+                        var existe = false
 
-                        db.collection("users")
-                            .add(userData)
-                            .addOnSuccessListener {
-                                Toast.makeText(requireContext().applicationContext, "Registro Exitoso", Toast.LENGTH_LONG).show()
-                                view.findNavController().navigate(R.id.action_registroFragment_to_homeActivity)
+                        db.collection("users").get().addOnSuccessListener { result ->
+
+                            for(documentR in result){
+
+                                if( documentR.data.getValue("email").toString() == user?.email.toString() ){
+                                    db.collection("users").document(documentR.id).set(userData)
+                                    existe = true
+                                }
+
                             }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(requireContext().applicationContext, "Error - Datos", Toast.LENGTH_LONG).show()
-                            }
+
+                        }
+
+                        if(!existe){
+                            db.collection("users")
+                                .add(userData)
+                                .addOnSuccessListener {
+                                    Toast.makeText(requireContext().applicationContext, "Registro Exitoso", Toast.LENGTH_LONG).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(requireContext().applicationContext, "Error - Datos", Toast.LENGTH_LONG).show()
+                                }
+                        }
+
+                        view.findNavController().navigate(R.id.action_registroFragment_to_homeActivity)
+
 
                     } else {
                         println("Creacion Fallida")
