@@ -12,6 +12,7 @@ import androidx.core.app.ActivityCompat.startActivityForResult
 import android.content.Intent
 import android.view.MenuItem
 import android.widget.ImageButton
+import android.widget.Toast
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorDestinationBuilder
@@ -31,7 +32,7 @@ class HomeActivity : AppCompatActivity() {
     private lateinit var auth: FirebaseAuth
 
     private lateinit var configuraciones: ImageButton
-    private lateinit var irAlogin: ImageButton
+    private lateinit var scanerCodigo: ImageButton
 
     //private lateinit var binding: ActivityMainBinding
 
@@ -43,14 +44,9 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         configNav ()
-        /*
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        val view = binding.root
-        setContentView(view)
-        configNav ()*/
-
 
         configuraciones = findViewById(R.id.btnConfiguraciones)
+        scanerCodigo = findViewById(R.id.btnScanProduct)
 
         configuraciones.setOnClickListener{
             val intent = Intent(this, PersonActivity::class.java)
@@ -58,20 +54,9 @@ class HomeActivity : AppCompatActivity() {
             finish();
         }
 
-        /*
-        irAlogin = findViewById(R.id.irAlogin)
-
-
-        auth = Firebase.auth
-
-        irAlogin.setOnClickListener{
-            Firebase.auth.signOut()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-            finish();
+        scanerCodigo.setOnClickListener{
+            Toast.makeText(this, "Abrir camara", Toast.LENGTH_LONG).show()
         }
-
-       */
 
     }
 
