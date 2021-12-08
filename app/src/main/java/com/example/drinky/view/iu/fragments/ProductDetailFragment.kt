@@ -107,36 +107,39 @@ class ProductDetailFragment : Fragment() {
 
                 var existe = false
 
-                db.collection("Carrito").addSnapshotListener { snapshot, error ->
+                db.collection("Carrito")
+                    .get()
+                    .addOnSuccessListener { result ->
 
-                    if( error != null ){
-                        return@addSnapshotListener
-                    }
+                        var ic = 0
 
-                    for(document in snapshot!!){
+                        for( documentC in result ){
 
-                        if(document.data.getValue("idProducto") == idProdut && document.data.getValue("emailUser") == currentUser.email){
-                            existe = true
-                            break
+                            if(documentC.data.getValue("idProducto") == idProdut && documentC.data.getValue("emailUser") == currentUser.email){
+                                existe = true
+                                break
+                            }
+
+                        }
+
+                        if(!existe){
+                            db.collection("Carrito")
+                                .add(datos)
+                                .addOnSuccessListener {
+                                    Toast.makeText(requireContext().applicationContext, "Agregado al carrito", Toast.LENGTH_LONG).show()
+                                }
+                                .addOnFailureListener { e ->
+                                    Toast.makeText(requireContext().applicationContext, "Error - No fue agregado", Toast.LENGTH_LONG).show()
+                                }
+                        }
+                        else{
+                            Toast.makeText(requireContext().applicationContext, "Ya esta en el carrito", Toast.LENGTH_LONG).show()
                         }
 
                     }
-
-                    if(!existe){
-                        db.collection("Carrito")
-                            .add(datos)
-                            .addOnSuccessListener {
-                                Toast.makeText(requireContext().applicationContext, "Agregado al carrito", Toast.LENGTH_LONG).show()
-                            }
-                            .addOnFailureListener { e ->
-                                Toast.makeText(requireContext().applicationContext, "Error - No fue agregado", Toast.LENGTH_LONG).show()
-                            }
+                    .addOnFailureListener { e ->
+                        Toast.makeText(requireContext().applicationContext, "Error", Toast.LENGTH_LONG).show()
                     }
-                    else{
-                        Toast.makeText(requireContext().applicationContext, "Ya esta en el carrito", Toast.LENGTH_LONG).show()
-                    }
-
-                }
 
             }
             else {

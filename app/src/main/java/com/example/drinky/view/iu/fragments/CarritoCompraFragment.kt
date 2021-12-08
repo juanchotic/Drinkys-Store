@@ -104,7 +104,39 @@ class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDele
 
             }
 
-            db.collection("Carrito").addSnapshotListener{ resultC, errorC ->
+            db.collection("Carrito").get().addOnSuccessListener { result ->
+
+                var ic = 0
+
+                for( documentC in result ){
+
+                    if( documentC.data.getValue("emailUser") == email ){
+
+                        for( x in 0..element.size-1 ){
+
+                            if( documentC.data.getValue("idProducto").toString() == element[x].idProducto ){
+                                (carrito as ArrayList<ListElement>).add(ic,
+                                    element[x]
+                                )
+                                ic += 1
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                val listAdapter = CarritoAdapter(carrito, requireContext(), this)
+
+                var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewCarrito)
+                recycleViewTodos.setHasFixedSize(true)
+                recycleViewTodos.layoutManager = LinearLayoutManager(requireContext()) //GridLayoutManager(requireContext(), 2)
+                recycleViewTodos.adapter = listAdapter
+
+            }
+
+            /*addSnapshotListener{ resultC, errorC ->
 
                 if( errorC != null ){
                     return@addSnapshotListener
@@ -131,14 +163,9 @@ class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDele
 
                 }
 
-                val listAdapter = CarritoAdapter(carrito, requireContext(), this)
 
-                var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewCarrito)
-                recycleViewTodos.setHasFixedSize(true)
-                recycleViewTodos.layoutManager = LinearLayoutManager(requireContext()) //GridLayoutManager(requireContext(), 2)
-                recycleViewTodos.adapter = listAdapter
 
-            }
+            }*/
 
         }
 
@@ -164,10 +191,10 @@ class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDele
                 .get()
                 .addOnSuccessListener { result ->
 
-                    for(document in result) {
+                    for(documentC in result) {
 
-                        if( document.data.getValue("idProducto").toString() == itemElemen.idProducto ){
-                            db.collection("Carrito").document(document.data.getValue("idProducto").toString()).delete()
+                        if( documentC.data.getValue("idProducto").toString() == itemElemen.idProducto ){
+                            db.collection("Carrito").document(documentC.data.getValue("idProducto").toString()).delete()
                         }
 
                     }
