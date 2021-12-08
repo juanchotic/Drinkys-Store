@@ -17,7 +17,7 @@
             app:srcCompat="@drawable/ic_account" />
 
         <TextView
-            android:id="@+id/textView7"
+            android:id="@+id/nombreUser"
             android:layout_width="358dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"

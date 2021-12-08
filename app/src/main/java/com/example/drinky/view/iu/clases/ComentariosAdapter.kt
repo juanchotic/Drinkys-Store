@@ -24,7 +24,7 @@ class ComentariosAdapter(val thisContext: Context, val resource: Int, val coment
 
         var modelo = comentarios.get(position)
 
-        var nombreTxt = view.findViewById<TextView>(R.id.textView7)
+        var nombreTxt = view.findViewById<TextView>(R.id.nombreUser)
         nombreTxt.text = modelo.nombre
 
         var calificacionRB= view.findViewById<RatingBar>(R.id.ratingBar)

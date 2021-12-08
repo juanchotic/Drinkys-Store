@@ -13,12 +13,19 @@ import androidx.navigation.findNavController
 import com.example.drinky.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
 
 class RegistroFragment : Fragment() {
 
     private lateinit var email:EditText
     private lateinit var pass:EditText
+    private lateinit var rePass:EditText
+    private lateinit var nombreUser:EditText
+    private lateinit var apelldio:EditText
+    private lateinit var telefono:EditText
+
+
     private lateinit var btnSignUp:Button
     private lateinit var btnSignIn:Button
     private lateinit var btnPhone:ImageButton
@@ -26,6 +33,7 @@ class RegistroFragment : Fragment() {
     private lateinit var btnBackHome:ImageButton
 
     private lateinit var auth: FirebaseAuth
+    private val db = Firebase.firestore
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -57,6 +65,11 @@ class RegistroFragment : Fragment() {
 
         email = view.findViewById(R.id.inputUserR)
         pass = view.findViewById(R.id.inputPasswordR)
+        rePass = view.findViewById(R.id.inputRepetirPasswordR)
+        nombreUser = view.findViewById(R.id.inputNombreR)
+        apelldio = view.findViewById(R.id.inputApellidoR)
+        telefono = view.findViewById(R.id.inputTelefonoR)
+
         btnSignIn = view.findViewById(R.id.btnSignInR)
         btnSignUp = view.findViewById(R.id.btnSignUpR)
         btnPhone = view.findViewById(R.id.btnTelefonoR)
@@ -73,7 +86,19 @@ class RegistroFragment : Fragment() {
                 view: View ->
             println("boton Sign UP  - Registro")
 
-            createAccount(view, email.text.toString(), pass.text.toString())
+            if( rePass.text.toString().isEmpty() || pass.text.toString().isEmpty() ){
+                Toast.makeText(requireContext().applicationContext, "Llene los campos faltantes", Toast.LENGTH_LONG).show()
+            }
+            else{
+
+                if( rePass.text.toString() == pass.text.toString() ){
+                    createAccount(view, email.text.toString(), pass.text.toString())
+                }
+                else{
+                    Toast.makeText(requireContext().applicationContext, "La contraseña no coincide", Toast.LENGTH_LONG).show()
+                }
+
+            }
 
         }
 
@@ -98,8 +123,24 @@ class RegistroFragment : Fragment() {
                 .addOnCompleteListener(requireActivity()) { task ->
                     if (task.isSuccessful) {
                         val user = auth.currentUser
-                        println("Creacion Con exito")
-                        view.findNavController().navigate(R.id.action_registroFragment_to_homeActivity)
+
+                        var userData = hashMapOf(
+                            "email" to user?.email.toString(),
+                            "nombre" to nombreUser.text.toString(),
+                            "apellido" to apelldio.text.toString(),
+                            "telefono" to telefono.text.toString()
+                        )
+
+                        db.collection("users")
+                            .add(userData)
+                            .addOnSuccessListener {
+                                Toast.makeText(requireContext().applicationContext, "Registro Exitoso", Toast.LENGTH_LONG).show()
+                                view.findNavController().navigate(R.id.action_registroFragment_to_homeActivity)
+                            }
+                            .addOnFailureListener { e ->
+                                Toast.makeText(requireContext().applicationContext, "Error - Datos", Toast.LENGTH_LONG).show()
+                            }
+
                     } else {
                         println("Creacion Fallida")
                         Toast.makeText(requireContext().applicationContext, "Usuaria ya Existe", Toast.LENGTH_LONG).show()
