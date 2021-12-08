@@ -65,6 +65,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  
 
                     (element as ArrayList<ListElement>).add(i,
                         ListElement(
+                            document.id,
                             document.data.getValue("precio").toString().toInt(),
                             document.data.getValue("popular").toString().toBoolean(),
                             document.data.getValue("nombre").toString(),
@@ -109,6 +110,7 @@ class ViewProductFragment : Fragment(), ListAdapter.OnItemClickListenerProduct  
         bundle.putString("nombre", itemElemen.nombre)
         bundle.putString("precio", itemElemen.precio.toString())
         bundle.putString("despc", itemElemen.descripcion)
+        bundle.putString("idProduct", itemElemen.idProducto)
 
         bundle.putString("volverA", "ProductView")
         bundle.putString("categoria", itemElemen.categoria)

@@ -5,29 +5,143 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.TextView
+import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.drinky.R
+import com.example.drinky.view.iu.clases.CarritoAdapter
+import com.example.drinky.view.iu.clases.ListAdapter
+import com.example.drinky.view.iu.clases.ListElement
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.ktx.firestore
+import com.google.firebase.ktx.Firebase
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
+class CarritoCompraFragment : Fragment(), CarritoAdapter.OnItemClickListenerDelete {
 
-/**
- * A simple [Fragment] subclass.
- * Use the [CarritoCompraFragment.newInstance] factory method to
- * create an instance of this fragment.
- */
-class CarritoCompraFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+    // Listas
+    private lateinit var element : List<ListElement>
+    private lateinit var carrito : List<ListElement>
+
+    // Firebase
+    private val db = Firebase.firestore
+    private lateinit var auth: FirebaseAuth
+
+    // XML
+    private lateinit var btnVaciar : Button
+    private lateinit var btnPagar : Button
+    private lateinit var totalPagar : TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+
+        auth = Firebase.auth
+        element = ArrayList<ListElement>()
+        carrito = ArrayList<ListElement>()
+
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        btnPagar = view.findViewById(R.id.btnPagar)
+        btnVaciar = view.findViewById(R.id.btnVaciar)
+        totalPagar = view.findViewById(R.id.totalPagar)
+
+        val currentUser = auth.currentUser
+        if(currentUser != null){
+            init(view, currentUser.email.toString())
         }
+        else {
+            Toast.makeText(requireContext().applicationContext, "Debes iniciar secion", Toast.LENGTH_LONG).show()
+        }
+
+
+        btnVaciar.setOnClickListener {
+            vaciar()
+        }
+
+        btnPagar.setOnClickListener {
+            pagar()
+        }
+
+
+    }
+
+    private fun pagar() {
+    }
+
+    private fun vaciar() {
+    }
+
+    private fun init(view:View, email:String){
+
+        var i = 0
+
+        db.collection("Productos").addSnapshotListener { result, error ->
+
+            if( error != null ){
+                return@addSnapshotListener
+            }
+
+            for(document in result!!){
+
+                (element as ArrayList<ListElement>).add(i,
+                    ListElement(
+                        document.id,
+                        document.data.getValue("precio").toString().toInt(),
+                        document.data.getValue("popular").toString().toBoolean(),
+                        document.data.getValue("nombre").toString(),
+                        document.data.getValue("categoria").toString(),
+                        document.data.getValue("descripcion").toString()
+                    )
+                )
+                i += 1
+
+            }
+
+            db.collection("Carrito").addSnapshotListener{ resultC, errorC ->
+
+                if( errorC != null ){
+                    return@addSnapshotListener
+                }
+
+                var ic = 0
+
+                for(document in resultC!!){
+
+                    if( document.data.getValue("emailUser").toString() == email ){
+
+                        for( x in 0..element.size-1 ){
+
+                            if( document.data.getValue("idProducto").toString() == element[x].idProducto ){
+                                (carrito as ArrayList<ListElement>).add(ic,
+                                    element[x]
+                                )
+                                ic += 1
+                            }
+
+                        }
+
+                    }
+
+                }
+
+                val listAdapter = CarritoAdapter(carrito, requireContext(), this)
+
+                var recycleViewTodos : RecyclerView = view.findViewById(R.id.recycleViewCarrito)
+                recycleViewTodos.setHasFixedSize(true)
+                recycleViewTodos.layoutManager = LinearLayoutManager(requireContext()) //GridLayoutManager(requireContext(), 2)
+                recycleViewTodos.adapter = listAdapter
+
+            }
+
+        }
+
     }
 
     override fun onCreateView(
@@ -39,22 +153,28 @@ class CarritoCompraFragment : Fragment() {
     }
 
     companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment CarritoCompraFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            CarritoCompraFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
+
+    }
+
+    override fun onItemClickDelete(itemElemen: ListElement?) {
+
+        if (itemElemen != null) {
+
+            db.collection("Carrito")
+                .get()
+                .addOnSuccessListener { result ->
+
+                    for(document in result) {
+
+                        if( document.data.getValue("idProducto").toString() == itemElemen.idProducto ){
+                            db.collection("Carrito").document(document.data.getValue("idProducto").toString()).delete()
+                        }
+
+                    }
+
                 }
-            }
+
+        }
+
     }
 }

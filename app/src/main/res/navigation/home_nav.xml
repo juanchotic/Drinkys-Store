@@ -22,12 +22,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/testVHomeFragment"
-        android:name="com.example.drinky.view.iu.fragments.TestVHomeFragment"
-        android:label="fragment_test_v_home"
-        tools:layout="@layout/fragment_test_v_home" />
-
-    <fragment
         android:id="@+id/viewProductFragment"
         android:name="com.example.drinky.view.iu.fragments.ViewProductFragment"
         android:label="fragment_view_product"
@@ -45,11 +39,11 @@
         android:label="fragment_comentarios"
         tools:layout="@layout/fragment_comentarios" >
         <action
-            android:id="@+id/action_comentariosFragment_to_testVHomeFragment"
-            app:destination="@id/testVHomeFragment" />
-        <action
             android:id="@+id/action_comentariosFragment_to_crearComentario"
             app:destination="@id/crearComentario" />
+        <action
+            android:id="@+id/action_comentariosFragment_to_aboutFragment"
+            app:destination="@id/aboutFragment" />
     </fragment>
     <fragment
         android:id="@+id/carritoCompraFragment"
@@ -80,5 +74,10 @@
             android:id="@+id/action_crearComentario_to_comentariosFragment"
             app:destination="@id/comentariosFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/aboutFragment"
+        android:name="com.example.drinky.view.iu.fragments.AboutFragment"
+        android:label="fragment_about"
+        tools:layout="@layout/fragment_about" />
 
 </navigation>

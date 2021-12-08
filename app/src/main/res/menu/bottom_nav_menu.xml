@@ -19,7 +19,7 @@
             android:title="comment" />
 
         <item
-            android:id="@+id/testVHomeFragment"
+            android:id="@+id/aboutFragment"
             android:icon="@drawable/ic_about_us"
             android:title="about us" />
 

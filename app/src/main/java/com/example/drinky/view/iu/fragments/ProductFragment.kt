@@ -100,6 +100,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
                     (element as ArrayList<ListElement>).add(i,
                         ListElement(
+                            document.id,
                             document.data.getValue("precio").toString().toInt(),
                             document.data.getValue("popular").toString().toBoolean(),
                             document.data.getValue("nombre").toString(),
@@ -112,23 +113,27 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
 
                         (elementVinos as ArrayList<ListElement>).add(vino,
                             ListElement(
+                                document.id,
                                 document.data.getValue("precio").toString().toInt(),
                                 document.data.getValue("popular").toString().toBoolean(),
                                 document.data.getValue("nombre").toString(),
                                 document.data.getValue("categoria").toString(),
                                 document.data.getValue("descripcion").toString()
-                            ))
+                            )
+                        )
                         vino += 1
 
                         if( document.data.getValue("popular").toString().toBoolean() ){
                             (elementPopulares as ArrayList<ListElement>).add(popular,
                                 ListElement(
+                                    document.id,
                                     document.data.getValue("precio").toString().toInt(),
                                     document.data.getValue("popular").toString().toBoolean(),
                                     document.data.getValue("nombre").toString(),
                                     document.data.getValue("categoria").toString(),
                                     document.data.getValue("descripcion").toString()
-                                ))
+                                )
+                            )
                             popular += 1
 
                         }
@@ -137,23 +142,27 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
                     else if( document.data.getValue("categoria").toString() == "ancheta" ){
                         (elementAnchetas as ArrayList<ListElement>).add(anche,
                             ListElement(
+                                document.id,
                                 document.data.getValue("precio").toString().toInt(),
                                 document.data.getValue("popular").toString().toBoolean(),
                                 document.data.getValue("nombre").toString(),
                                 document.data.getValue("categoria").toString(),
                                 document.data.getValue("descripcion").toString()
-                            ))
+                            )
+                        )
                         anche += 1
 
                         if( document.data.getValue("popular").toString().toBoolean() ){
                             (elementPopulares as ArrayList<ListElement>).add(popular,
                                 ListElement(
+                                    document.id,
                                     document.data.getValue("precio").toString().toInt(),
                                     document.data.getValue("popular").toString().toBoolean(),
                                     document.data.getValue("nombre").toString(),
                                     document.data.getValue("categoria").toString(),
                                     document.data.getValue("descripcion").toString()
-                                ))
+                                )
+                            )
                             popular += 1
 
 
@@ -203,6 +212,7 @@ class ProductFragment : Fragment(), ListAdapterHome.OnItemClickListener  {
         bundle.putString("nombre", itemElemen.nombre)
         bundle.putString("precio", itemElemen.precio.toString())
         bundle.putString("despc", itemElemen.descripcion)
+        bundle.putString("idProduct", itemElemen.idProducto)
 
         bundle.putString("volverA", "Home")
 

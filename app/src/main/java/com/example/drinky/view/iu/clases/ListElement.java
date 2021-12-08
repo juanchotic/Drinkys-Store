@@ -37,6 +37,15 @@ public class ListElement implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public ListElement(String idProducto, int precio, boolean popular, String nombre, String categoria, String descripcion) {
+        this.precio = precio;
+        this.popular = popular;
+        this.idProducto = idProducto;
+        this.nombre = nombre;
+        this.categoria = categoria;
+        this.descripcion = descripcion;
+    }
+
     public ListElement(String idProducto, int precio, boolean popular, String imagen, String nombre, String categoria, String descripcion) {
         this.idProducto = idProducto;
         this.precio = precio;
