@@ -1,6 +1,7 @@
 package com.example.drinky.view.iu.fragments
 
 import android.os.Bundle
+import android.telephony.CellIdentity
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
 import com.google.android.gms.maps.SupportMapFragment
+import com.google.android.gms.maps.model.BitmapDescriptorFactory
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
 
@@ -75,18 +77,27 @@ class AboutFragment : Fragment(), OnMapReadyCallback {
         val address =   "El Poblado. Medellin-Antioquia"
         val latitude=   6.227259
         val longitude=  -75.5719699
-
-        val zoom = 15f
+        val zoom = 17f
         val centerMap = LatLng(latitude,longitude)
         p0?.animateCamera(CameraUpdateFactory.newLatLngZoom(centerMap, zoom))
 
 
-        var marker = p0.addMarker(
+            p0.addMarker(
             MarkerOptions()
-                .title(name)
-                .position(centerMap)
-        )
+            .title(name)
+            .snippet(address)
+            .position(centerMap)
+            .icon(BitmapDescriptorFactory.fromResource(R.mipmap.bar)).anchor(0.0f,1.0f))
 
+
+
+        //marker.tag = place
 
     }
 }
+
+
+
+
+
+

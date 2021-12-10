@@ -11,13 +11,18 @@
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
+    //Permisos para usar la Camara del Dispositivo
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-feature android:name="android.hardware.camera" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/logo_sin_fondo"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/logo_sin_fondo"
         android:supportsRtl="true"
-        android:theme="@style/Theme.AppCompat.NoActionBar">
+        android:theme="@style/Theme.AppCompat.NoActionBar"
+        android:hardwareAccelerated = "true">
 
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
@@ -30,6 +35,10 @@
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="AIzaSyBE3BHrQql_O8ZSPgP0bX-S3933pXs1iBg"/>
+
+        <activity android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:screenOrientation="fullSensor"
+            tools:replace="screenOrientation"/>
 
         <activity
             android:name=".view.iu.activities.PersonActivity"

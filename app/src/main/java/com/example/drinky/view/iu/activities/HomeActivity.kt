@@ -13,6 +13,7 @@ import android.content.Intent
 import android.view.MenuItem
 import android.widget.ImageButton
 import android.widget.Toast
+//import androidx.camera.core.Camera
 import androidx.navigation.NavController
 import androidx.navigation.Navigation.findNavController
 import androidx.navigation.fragment.FragmentNavigatorDestinationBuilder
@@ -24,6 +25,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
+import com.journeyapps.barcodescanner.ScanContract
+import com.journeyapps.barcodescanner.ScanIntentResult
+import com.journeyapps.barcodescanner.ScanOptions
 
 
 class HomeActivity : AppCompatActivity() {
@@ -42,50 +46,47 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
-        configNav ()
+        this.setContentView(R.layout.activity_home)
+        this.configNav()
 
-        configuraciones = findViewById(R.id.btnConfiguraciones)
-        scanerCodigo = findViewById(R.id.btnScanProduct)
+        this.configuraciones = this.findViewById(R.id.btnConfiguraciones)
+        this.scanerCodigo = this.findViewById(R.id.btnScanProduct)
 
-        configuraciones.setOnClickListener{
+        this.configuraciones.setOnClickListener {
             val intent = Intent(this, PersonActivity::class.java)
-            startActivity(intent)
-            finish();
+            this.startActivity(intent)
+            this.finish()
         }
 
-        scanerCodigo.setOnClickListener{
-            Toast.makeText(this, "Abrir camara", Toast.LENGTH_LONG).show()
+        this.scanerCodigo.setOnClickListener {
+            //Toast.makeText(this, "Soy el Scanner", Toast.LENGTH_LONG).show()
+            this.barcodeLauncher.launch(ScanOptions())
         }
 
     }
 
-    fun configNav () {
-        val navHostFragnent = supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
-        val navController = navHostFragnent.navController
-        findViewById<BottomNavigationView>(R.id.bottom_navigation).setupWithNavController(
+    // Register the launcher and result handler
+    private val barcodeLauncher = this.registerForActivityResult(
+        ScanContract()
+    ){ result : ScanIntentResult ->
+        if(result.contents == null) {
+            Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show()
+        } else {
+            Toast.makeText(
+                this,
+                "Scanned: " + result.contents,
+                Toast.LENGTH_LONG
+            ).show()
+        }
+    }
+
+    fun configNav() {
+        val navHostFragment =
+            this.supportFragmentManager.findFragmentById(R.id.myNavHostFragment) as NavHostFragment
+        val navController = navHostFragment.navController
+        this.findViewById<BottomNavigationView>(R.id.bottom_navigation).setupWithNavController(
             navController
         )
     }
-
-    /*
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        // Handle item selection
-        return when (item.itemId) {
-            R.id.ic_home -> {
-                println("This is my home")
-                true
-            }
-            R.id.ic_log -> {
-                println("This is my Logo")
-                true
-            }
-            R.id.ic_person -> {
-                println("This is my person")
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }*/
-
 }
+
